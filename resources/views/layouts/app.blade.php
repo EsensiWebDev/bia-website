@@ -9,17 +9,22 @@
 
     <!-- Tailwind CSS -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Signika:wght@400;700&display=swap"
+        rel="stylesheet">
+
 </head>
 
-<body>
+<body class="relative">
     <div id="app-content">
         @include('components.header')
 
 
         <!-- Main Content Section -->
-        <div class="mx-auto">
+        <main class="relative z-0">
             @yield('content')
-        </div>
+        </main>
 
         <!-- Footer Section -->
         @if (!isset($hideFooter) || !$hideFooter)
