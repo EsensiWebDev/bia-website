@@ -19,7 +19,22 @@
         "Noto Color Emoji";
 }
 
-/* Optional class untuk Signika */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
 .font-signika {
     font-family: "Signika", sans-serif;
+}
+.font-montserrat {
+    font-family: "Montserrat", sans-serif;
+}
+.clip-bottom-slant {
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 40px), 0 calc(100% - 0px));
+}
+
+.clip-top-slant {
+    clip-path: polygon(0 50px, 100% 10px, 100% 100%, 0 100%);
 }
