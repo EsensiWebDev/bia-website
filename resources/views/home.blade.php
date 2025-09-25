@@ -76,8 +76,14 @@
 
                 <!-- Image -->
                 <div class="lg:w-1/2 flex flex-col justify-end lg:justify-start items-center">
-                    <img src="{{ Vite::asset('resources/images/doctor-photo.webp') }}" alt="Dentist"
-                        class="shadow-lg h-full w-full lg:max-w-sm lg:mt-[-13em] mt-0">
+                    <div class="relative inline-block">
+                        <div class="relative">
+                            <div class="absolute inset-0 border-4 border-white translate-x-4 translate-y-4 z-10"></div>
+                            <img src="{{ Vite::asset('resources/images/doctor-photo.webp') }}" alt="Dentist"
+                                class="relative shadow-lg w-full lg:max-w-sm lg:mt-[-13em] mt-0">
+                        </div>
+                    </div>
+
                     <div class="absolute flex flex-col gap-4 right-10 lg:top-5 sm:top-100">
                         <a href="#"
                             class="bg-[#D9D9D9] hover:bg-[#C1C1C1] text-white rounded-full w-24 h-24 flex items-center justify-center font-semibold text-center transition-all duration-300">
