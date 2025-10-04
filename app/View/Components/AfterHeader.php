@@ -6,19 +6,23 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class AvailableTreatments extends Component
+class AfterHeader extends Component
 {
     /**
      * Create a new component instance.
      */
-    public $stylesection;
+    public $styleSection;
     public $title;
     public $titleColor;
-    public function __construct($stylesection = 'bg-white py-16', $title = 'Available Treatments', $titleColor = 'text-[#203B6E]')
+    public $subHeading;
+    public $backUrl;
+    public function __construct($styleSection = '', $title = 'Our Doctor’s Academic Background', $titleColor = 'text-black', $subHeading = null, $backUrl = null)
     {
-        $this->stylesection = $stylesection;
+        $this->styleSection = $styleSection;
         $this->title = $title;
         $this->titleColor = $titleColor;
+        $this->subHeading = $subHeading;
+        $this->backUrl = $backUrl;
     }
 
     /**
@@ -26,6 +30,6 @@ class AvailableTreatments extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.available-treatments');
+        return view('components.after-header');
     }
 }

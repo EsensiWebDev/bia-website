@@ -12,9 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('articles', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
+            $table->uuid('category_article_id')->index();
+            $table->foreign('category_article_id')
+                ->references('id')
+                ->on('category_articles')
+                ->onDelete('cascade');
             $table->string('slug')->unique();
-            $table->string('category');
             $table->string('author');
             $table->string('title');
             $table->string('thumbnail')->nullable();
@@ -28,6 +32,7 @@ return new class extends Migration
             $table->timestamps();
         });
     }
+
 
     /**
      * Reverse the migrations.

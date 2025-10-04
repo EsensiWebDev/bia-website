@@ -38,3 +38,22 @@ h6,
 .clip-top-slant {
     clip-path: polygon(0 50px, 100% 10px, 100% 100%, 0 100%);
 }
+
+.prose h1 {
+    @apply text-3xl md:text-3xl my-3;
+}
+.prose h2 {
+    @apply text-2xl md:text-2xl my-3;
+}
+.prose h3 {
+    @apply text-xl md:text-xl my-3;
+}
+.prose img {
+    @apply w-full h-auto shadow;
+}
+.prose figure {
+    @apply my-6;
+}
+.prose figcaption.attachment__caption {
+    @apply hidden;
+}

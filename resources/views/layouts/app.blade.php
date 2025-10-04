@@ -8,7 +8,8 @@
     <title>@yield('title', 'BIA Dental Center')</title>
 
     <!-- Tailwind CSS -->
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @vite('resources/css/app.css')
+    @filamentStyles
     <script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script>
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Signika:wght@400;700&display=swap"
@@ -31,6 +32,8 @@
             @include('components.footer')
         @endif
     </div>
+    @vite('resources/js/app.js')
+    @filamentScripts
 </body>
 
 </html>

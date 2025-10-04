@@ -1,14 +1,21 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="treatment-general">
+    <div class="treatment-category">
 
         {{-- After Header Section --}}
-        <x-after-header stylesection="py-26 bg-white" />
+        <x-after-header stylesection="py-26 bg-white"
+            subHeading='<p class="text-white text-md sm:text-xl max-w-3xl text-center m-auto">
+        Dental implants are one of the most trusted solutions in modern tooth replacement.
+        Designed to look, feel, and function like natural teeth, implants offer a long-lasting
+        alternative to removable dentures. <br><br>
+        In more complex cases, the treatment may involve a longer timeline and multiple stages,
+        with additional procedures sometimes required to achieve the best possible outcome.</p>' />
 
 
         {{-- Section Flow Section --}}
-        <section class="flow-treatments bg-white relative w-full py-16">
+        <section class="flow-treatments
+            bg-white relative w-full py-16">
             <div class="max-w-7xl mx-auto px-4 text-center">
                 <h1 class=" text-[#203B6E] text-4xl font-[400] mb-12">Flow of our treatments</h1>
 

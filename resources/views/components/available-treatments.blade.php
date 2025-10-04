@@ -1,9 +1,9 @@
-<section class="available-treatments py-16 {{ $bg }}">
+<section class="available-treatments {{ $stylesection }}">
     <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center">
         <h2 class="text-4xl font-[400] font-signika {{ $titleColor }} mb-12">{{ $title }}</h2>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-            <a href="#" class="group relative shadow-md hover:shadow-lg transition">
+            <a href="/treatments/implant" class="group relative shadow-md hover:shadow-lg transition">
                 <div class="overflow-hidden h-full">
                     <img src="{{ Vite::asset('resources/images/dental.webp') }}" alt="Dental Implant"
                         class="w-auto h-full object-cover group-hover:scale-105 transition">

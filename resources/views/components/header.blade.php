@@ -7,22 +7,25 @@
             <!-- Logo -->
             <div class="flex-shrink-0">
                 <a href="/">
-                    @if(request()->routeIs('home'))
-                    <img class="h-12 w-auto" src="{{ Vite::asset('resources/images/logo-white.webp') }}" alt="BIA Logo">
+                    @if (request()->routeIs('home'))
+                        <img class="h-12 w-auto" src="{{ Vite::asset('resources/images/logo-white.webp') }}"
+                            alt="BIA Logo">
                     @else
-                    <img class="h-12 w-auto" src="{{ Vite::asset('resources/images/logo-blue.webp') }}" alt="BIA Logo">
+                        <img class="h-12 w-auto" src="{{ Vite::asset('resources/images/logo-blue.webp') }}"
+                            alt="BIA Logo">
                     @endif
                 </a>
             </div>
 
             <!-- Desktop Menu -->
-            <div class="hidden {{ request()->routeIs('home') ? 'text-white' : 'text-[#203B6E]' }}  md:flex space-x-8 items-center">
+            <div
+                class="hidden {{ request()->routeIs('home') ? 'text-white' : 'text-[#203B6E]' }}  md:flex space-x-8 items-center">
                 <a href="/" class=" hover:text-gray-300 font-medium">Home</a>
                 <a href="/treatments" class=" hover:text-gray-300 font-medium">Treatments</a>
                 <a href="#" class=" hover:text-gray-300 font-medium">All-on-4 Implant</a>
                 <a href="#" class=" hover:text-gray-300 font-medium">Pricing</a>
                 <a href="#" class=" hover:text-gray-300 font-medium">About Us</a>
-                <a href="#" class=" hover:text-gray-300 font-medium">Blog</a>
+                <a href="/blog" class=" hover:text-gray-300 font-medium">Blog</a>
 
                 <!-- Book Now Button -->
                 <div class="hidden md:flex">

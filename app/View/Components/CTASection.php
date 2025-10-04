@@ -11,19 +11,19 @@ class CTASection extends Component
     /**
      * Create a new component instance.
      */
-    public $bg;
+    public $stylesection;
     public $title;
     public $titleColor;
     public $btnUrl;
     public $btnText;
     public function __construct(
-        $bg = 'bg-white',
+        $stylesection = 'py-16 bg-white]',
         $title = 'Ready To Transform Your Smile and Live Happier?',
         $titleColor = 'text-[#343A40]',
         $btnUrl = '#default',
         $btnText = 'MEET THE DENTIST'
     ) {
-        $this->bg = $bg;
+        $this->stylesection = $stylesection;
         $this->title = $title;
         $this->titleColor = $titleColor;;
         $this->btnUrl = $btnUrl;

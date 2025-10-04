@@ -98,7 +98,7 @@
         </section>
 
         <!-- Available Treatments Section -->
-        <x-available-treatments titleColor="text-[#343A40]" />
+        <x-available-treatments stylesection="bg-white pt-16 pb-24" titleColor="text-[#343A40]" />
 
         <!-- WCU Section -->
         <section class="wcu bg-gray-200 py-16">
@@ -311,95 +311,55 @@
             </div>
         </section>
 
-        {{-- Blog Section --}}
+        {{-- Blog/Article Section --}}
         <section class="blog bg-white">
             <div class="mx-auto max-w-7xl lg:px-8 border-t border-gray-200 py-16 px-4">
                 <div class="max-w-6xl mx-auto text-center mb-12">
                     <h2 class="text-4xl font-[400] text-[#203B6E]">Blog</h2>
                 </div>
-                <div
-                    class="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-                    <article class="flex max-w flex-col items-start justify-between overflow-hidden group cursor-pointer">
-                        <a href="#" class="block w-full">
-                            <div class="overflow-hidden w-full h-64">
-                                <img src="{{ Vite::asset('resources/images/dental_aesthetics.webp') }}"
-                                    alt="Dental Implant"
-                                    class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
-                            </div>
-                        </a>
-                        <div class="flex items-center gap-x-2 text-sm uppercase my-3">
-                            <time datetime="2020-03-16">26 September 2025</time> |
-                            <a href="#category" class="hover:text-[#203B6E]">CATEGORY</a>
-                        </div>
-                        <div class="grow">
-                            <a href="#" class="block">
-                                <h3
-                                    class="text-xl font-bold text-[#203B6E] transition-colors duration-300 group-hover:text-[#7DB8D8]">
-                                    How to use search engine optimization to drive sales
-                                </h3>
-                            </a>
-                            <p class="mt-2 line-clamp-3">
-                                Cupiditate maiores ullam eveniet adipisci in doloribus nulla minus. Voluptas iusto
-                                libero adipisci rem et corporis. Nostrud sint anim sunt aliqua. Nulla eu labore irure
-                                incididunt velit cillum quis magna dolore.
-                            </p>
-                        </div>
-                    </article>
-
-                    <article class="flex max-w flex-col items-start justify-between overflow-hidden group cursor-pointer">
-                        <a href="#" class="block w-full">
-                            <div class="overflow-hidden w-full h-64">
-                                <img src="{{ Vite::asset('resources/images/hero-home.webp') }}" alt="Dental Implant"
-                                    class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
-                            </div>
-                        </a>
-                        <div class="flex items-center gap-x-2 text-sm uppercase my-3">
-                            <time datetime="2020-03-16">16 August 2023</time> |
-                            <a href="#category" class="hover:text-[#203B6E]">CATEGORY</a>
-                        </div>
-                        <div class="grow">
-                            <a href="#" class="block">
-                                <h3
-                                    class="text-xl font-bold text-[#203B6E] transition-colors duration-300 group-hover:text-[#7DB8D8]">
-                                    Learn how to grow your business with our expert advice.
-                                </h3>
-                            </a>
-                            <p class="mt-2 line-clamp-3">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                                labore et dolore magna aliqua
-                            </p>
-                        </div>
-                    </article>
-
-                    <article class="flex max-w flex-col items-start justify-between overflow-hidden group cursor-pointer">
-                        <a href="#" class="block w-full">
-                            <div class="overflow-hidden w-full h-64">
-                                <img src="{{ Vite::asset('resources/images/dental.webp') }}" alt="Dental Implant"
-                                    class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
-                            </div>
-                        </a>
-                        <div class="flex items-center gap-x-2 text-sm uppercase my-3">
-                            <time datetime="2020-03-16">27 April 2020</time> |
-                            <a href="#category" class="hover:text-[#203B6E]">CATEGORY</a>
-                        </div>
-                        <div class="grow">
-                            <a href="#" class="block">
-                                <h3
-                                    class="text-xl font-bold text-[#203B6E] transition-colors duration-300 group-hover:text-[#7DB8D8]">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                                </h3>
-                            </a>
-                            <p class="mt-2 line-clamp-3">
-                                Cupiditate maiores ullam eveniet adipisci in doloribus nulla minus. Voluptas iusto
-                                libero adipisci rem et corporis. Nostrud sint anim sunt aliqua. Nulla eu labore irure
-                                incididunt velit cillum quis magna dolore.
-                            </p>
-                        </div>
-                    </article>
-                </div>
-
+                @if ($articles->isEmpty())
+                    <p class="text-center text-gray-500">No posts found.</p>
+                @else
+                    <div
+                        class="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+                        @foreach ($articles as $article)
+                            <article
+                                class="flex max-w flex-col items-start justify-between overflow-hidden group cursor-pointer">
+                                <a href="{{ route('blog.show', [$article->category->slug, $article->slug]) }}"
+                                    class="block w-full">
+                                    <div class="overflow-hidden w-full h-64">
+                                        <img src="{{ asset('storage/' . $article->thumbnail) }}"
+                                            alt="{{ $article->thumbnail_alt_text }}"
+                                            class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                                    </div>
+                                </a>
+                                <div class="flex items-center gap-x-2 text-sm uppercase my-3">
+                                    <time datetime="{{ $article->publish_date->format('Y-m-d') }}">
+                                        {{ $article->publish_date->format('d F Y') }}
+                                    </time> |
+                                    <a href="{{ route('blog.category', $article->category->slug) }}"
+                                        class="hover:text-[#203B6E]">
+                                        {{ $article->category->title }}
+                                    </a>
+                                </div>
+                                <div class="grow">
+                                    <a href="{{ route('blog.show', [$article->category->slug, $article->slug]) }}"
+                                        class="block">
+                                        <h3
+                                            class="text-xl font-bold text-[#203B6E] transition-colors duration-300 group-hover:text-[#7DB8D8]">
+                                            {{ $article->title }}
+                                        </h3>
+                                    </a>
+                                    <p class="mt-2 line-clamp-3">
+                                        {{ Str::limit(strip_tags($article->content), 150) }}
+                                    </p>
+                                </div>
+                            </article>
+                        @endforeach
+                    </div>
+                @endif
                 <div class="flex space-x-4 justify-center mt-8">
-                    <a href="#"
+                    <a href="/blog"
                         class="bg-[#7DB8D8] hover:bg-[#6ca7c8] text-white px-6 py-3 font-semibold transition">
                         VIEW MORE ARTICLES
                     </a>
