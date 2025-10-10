@@ -8,13 +8,14 @@
                         <p class='text-gray-100 uppercase'>{{ $article->publish_date->format('d F Y') }}</p> |
                         <p class='capitalize'>by {{ $article->author }}</p>
                     </div>"
-        backUrl="<a href='/blog' class='absolute top-8 left-6'>< BACK</a>" />
+        backUrl="<a href='{{ route('blog.index') }}' class='absolute top-8 left-6'>< BACK</a>" />
 
     {{-- Article Thumbnail & Content --}}
     <section class="max-w-4xl mx-auto px-4 border-b border-gray-200">
         <!-- Gambar Thumbnail -->
         <div class="-mt-24 relative z-0">
-            <img src="{{ asset('storage/' . $article->thumbnail) }}" alt="Thumbnail Artikel" class="w-full h-auto shadow-md">
+            <img src="{{ asset('storage/' . $article->thumbnail) }}" alt="{{ $article->thumbnail_alt_text }}"
+                class="w-full h-auto shadow-md">
         </div>
 
         <!-- Konten Rich HTML -->

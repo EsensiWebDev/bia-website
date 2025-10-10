@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Articles;
 use Illuminate\Http\Request;
+use App\Models\CategoryTreatment;
 
 class HomeController extends Controller
 {
@@ -13,6 +14,36 @@ class HomeController extends Controller
             ->orderByDesc('publish_date') // atau 'created_at', tergantung struktur tabelmu
             ->take(3)
             ->get();
-        return view('home', compact('articles'));
+
+        $cattreatments = CategoryTreatment::select('id', 'title', 'slug', 'thumbnail')
+            ->orderByDesc('created_at')
+            ->get();
+
+        return view('home', compact('articles', 'cattreatments'));
+    }
+
+    //PRICING ROUTE
+    public function pricing()
+    {
+        return view('pricing/index');
+    }
+    public function pricelist()
+    {
+        return view('pricing/pricelist');
+    }
+    public function payments()
+    {
+        return view('pricing/payment');
+    }
+
+
+    public function about()
+    {
+        return view('about');
+    }
+
+    public function allon4implant()
+    {
+        return view('allon4implant');
     }
 }

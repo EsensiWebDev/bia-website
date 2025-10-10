@@ -1,5 +1,5 @@
 <section class="after-header relative w-full">
-    <div class="bg-cover bg-center text-center text-white {{ $styleSection }} py-16 px-4 min-h-[377px] flex flex-col justify-center relative"
+    <div class="bg-cover bg-center text-center text-white mt-24 {{ $styleSection ?? 'py-16' }} px-4 min-h-[377px] flex flex-col justify-center relative"
         style="background-image: url('{{ Vite::asset('resources/images/section-header.webp') }}');">
 
         @if ($backUrl)

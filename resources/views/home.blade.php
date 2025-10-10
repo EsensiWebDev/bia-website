@@ -78,7 +78,7 @@
                 <div class="lg:w-1/2 flex flex-col justify-end lg:justify-start items-center">
                     <div class="relative inline-block">
                         <div class="relative">
-                            <div class="absolute inset-0 border-4 border-white translate-x-4 translate-y-4 z-10"></div>
+                            <div class="absolute inset-0 border-2 border-white translate-x-4 translate-y-4 z-10"></div>
                             <img src="{{ Vite::asset('resources/images/doctor-photo.webp') }}" alt="Dentist"
                                 class="relative shadow-lg w-full lg:max-w-sm lg:mt-[-13em] mt-0">
                         </div>
@@ -98,7 +98,8 @@
         </section>
 
         <!-- Available Treatments Section -->
-        <x-available-treatments stylesection="bg-white pt-16 pb-24" titleColor="text-[#343A40]" />
+        <x-available-treatments :treatments="$cattreatments" stylesection="bg-[#F1F1F1] pt-16 pb-24" title="Treatments Available"
+            titleColor="text-[#203B6E]" />
 
         <!-- WCU Section -->
         <section class="wcu bg-gray-200 py-16">
@@ -329,7 +330,7 @@
                                     class="block w-full">
                                     <div class="overflow-hidden w-full h-64">
                                         <img src="{{ asset('storage/' . $article->thumbnail) }}"
-                                            alt="{{ $article->thumbnail_alt_text }}"
+                                            alt="{{ $article->thumbnail_alt_text ?? 'Blog Article Bia Dental' }}"
                                             class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
                                     </div>
                                 </a>
@@ -359,7 +360,7 @@
                     </div>
                 @endif
                 <div class="flex space-x-4 justify-center mt-8">
-                    <a href="/blog"
+                    <a href="{{ route('blog.index') }}"
                         class="bg-[#7DB8D8] hover:bg-[#6ca7c8] text-white px-6 py-3 font-semibold transition">
                         VIEW MORE ARTICLES
                     </a>

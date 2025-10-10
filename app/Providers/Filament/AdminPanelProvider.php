@@ -6,6 +6,7 @@ use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
+use Filament\Navigation\NavigationGroup;
 use Filament\Pages;
 use Filament\Panel;
 use Filament\PanelProvider;
@@ -53,6 +54,23 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
-            ]);
+            ])->navigationGroups([
+                NavigationGroup::make()
+                    ->label('Treatments')
+                    ->icon('heroicon-o-document-text')
+                    ->collapsible()
+                    ->collapsed(),
+                NavigationGroup::make()
+                    ->label('Articles')
+                    ->icon('heroicon-m-list-bullet')
+                    ->collapsible()
+                    ->collapsed(),
+            ])
+            ->resources([
+                \App\Filament\Resources\CategoryTreatmentResource::class,
+                \App\Filament\Resources\TreatmentResource::class,
+                \App\Filament\Resources\CategoryArticleResource::class,
+                \App\Filament\Resources\ArticlesResource::class,
+            ]);;
     }
 }

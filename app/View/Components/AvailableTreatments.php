@@ -11,11 +11,15 @@ class AvailableTreatments extends Component
     /**
      * Create a new component instance.
      */
+    public $treatments;
+    public $category;
     public $stylesection;
     public $title;
     public $titleColor;
-    public function __construct($stylesection = 'bg-white py-16', $title = 'Available Treatments', $titleColor = 'text-[#203B6E]')
+    public function __construct($treatments = null, $category = null, $stylesection = null, $title = 'Available Treatments', $titleColor = 'text-[#203B6E]')
     {
+        $this->treatments = $treatments;
+        $this->category = $category;
         $this->stylesection = $stylesection;
         $this->title = $title;
         $this->titleColor = $titleColor;

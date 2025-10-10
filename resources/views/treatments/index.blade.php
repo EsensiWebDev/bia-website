@@ -4,7 +4,7 @@
     <div class="treatment-general">
 
         {{-- After Header Section --}}
-        <x-after-header stylesection="py-26 bg-white" />
+        <x-after-header stylesection="py-26 bg-white" title="All Treatments at BIA Dental Center" />
 
 
         {{-- Section Flow Section --}}
@@ -62,8 +62,10 @@
         </section>
 
         <!-- Available Treatments Section -->
-        <x-available-treatments stylesection="bg-[#F1F1F1] pt-16 pb-24" title="Treatments Available"
+        <x-available-treatments :treatments="$cattreatments" stylesection="bg-[#F1F1F1] pt-16 pb-24" title="Treatments Available"
             titleColor="text-[#203B6E]" />
+
+
 
         {{-- CTA Section --}}
         <x-cta-section stylesection="py-26 bg-white" />

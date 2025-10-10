@@ -16,7 +16,7 @@ class AfterHeader extends Component
     public $titleColor;
     public $subHeading;
     public $backUrl;
-    public function __construct($styleSection = '', $title = 'Our Doctor’s Academic Background', $titleColor = 'text-black', $subHeading = null, $backUrl = null)
+    public function __construct($styleSection = null, $title = 'Our Doctor’s Academic Background', $titleColor = 'text-black', $subHeading = null, $backUrl = null)
     {
         $this->styleSection = $styleSection;
         $this->title = $title;

@@ -57,3 +57,29 @@ h6,
 .prose figcaption.attachment__caption {
     @apply hidden;
 }
+.detail-maintenance *,
+.frame-line-treatment * {
+    @apply text-[#000];
+    font-family: "Montserrat", sans-serif;
+}
+.detail-maintenance ol,
+.timeframe-treatments ol {
+    @apply list-decimal list-inside;
+}
+.timeframe-treatments ul {
+    @apply list-['•'] list-inside;
+}
+.detail-maintenance ul {
+    @apply list-disc list-inside ml-3;
+}
+.detail-maintenance h2 {
+    @apply text-2xl font-[400] mb-3 mt-5;
+    font-family: "Montserrat", sans-serif;
+}
+.frame-line-treatment ul,
+.frame-line-treatment ol {
+    @apply text-sm md:text-base text-[#000000] list-disc list-inside md:[column-width:18rem] md:[column-gap:2rem] [&>li]:break-inside-avoid [&>li]:mb-1;
+}
+.timeframe-treatments .stage-title h2 {
+    @apply text-2xl;
+}

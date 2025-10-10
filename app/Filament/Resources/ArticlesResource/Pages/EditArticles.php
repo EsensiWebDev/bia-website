@@ -3,8 +3,8 @@
 namespace App\Filament\Resources\ArticlesResource\Pages;
 
 use App\Filament\Resources\ArticlesResource;
-use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
+use Filament\Actions\DeleteAction;
 
 class EditArticles extends EditRecord
 {
@@ -13,7 +13,11 @@ class EditArticles extends EditRecord
     protected function getHeaderActions(): array
     {
         return [
-            Actions\DeleteAction::make(),
+            DeleteAction::make(),
         ];
+    }
+    protected function getRedirectUrl(): string
+    {
+        return $this->getResource()::getUrl('index');
     }
 }

@@ -1,14 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
+
     {{-- After Header Section --}}
     <x-after-header stylesection="py-26 bg-white" title="Blog"
         subHeading="<div class='mt-5 flex md:flex-row flex-wrap gap-3 md:gap-5 justify-center'>
                         <h2 class='text-gray-100 uppercase text-2xl'>{{ $category->title }}</h2>
                     </div>"
-        backUrl="<a href='/blog' class='absolute top-8 left-6'>< BACK</a>" />
+        backUrl="<a href='{{ route('blog.index') }}' class='absolute top-8 left-6'>< BACK</a>" />
 
-
+    {{-- Section Main Grid Article --}}
     <section class="blog bg-white">
         <div class="mx-auto max-w-7xl lg:px-8 border-t border-gray-200 py-16 px-4">
 
