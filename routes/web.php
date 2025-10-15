@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\TreatmentController;
 
 Route::get('/', [HomeController::class, 'home'])->name('home');
@@ -14,6 +15,11 @@ Route::prefix('treatments')->group(function () {
     Route::get('/', [TreatmentController::class, 'index'])->name('treatments.index');
     Route::get('/{category}', [TreatmentController::class, 'treatments'])->name('treatments.treatments');
     Route::get('/{category}/{slug}', [TreatmentController::class, 'show'])->name('treatments.show');
+});
+// TREATMENTS
+Route::prefix('team')->group(function () {
+    Route::get('/', [DoctorController::class, 'index'])->name('doctor.index');
+    Route::get('/{slug}', [DoctorController::class, 'show'])->name('doctor.show');
 });
 
 // PRICING
@@ -28,4 +34,10 @@ Route::prefix('blog')->group(function () {
     Route::get('/', [BlogController::class, 'index'])->name('blog.index');
     Route::get('/{category}', [BlogController::class, 'category'])->name('blog.category');
     Route::get('/{category}/{slug}', [BlogController::class, 'show'])->name('blog.show');
+});
+
+// DOCTOR
+Route::prefix('doctors')->group(function () {
+    Route::get('/', [DoctorController::class, 'index'])->name('doctors.index');
+    Route::get('/{doctor}', [DoctorController::class, 'show'])->name('doctors.show');
 });

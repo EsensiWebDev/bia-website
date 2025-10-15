@@ -31,6 +31,9 @@ h6,
 .font-montserrat {
     font-family: "Montserrat", sans-serif;
 }
+.font-inter {
+    font-family: "Inter", sans-serif;
+}
 .clip-bottom-slant {
     clip-path: polygon(0 0, 100% 0, 100% calc(100% - 40px), 0 calc(100% - 0px));
 }

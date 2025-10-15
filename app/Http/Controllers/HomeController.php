@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Doctor;
 use App\Models\Articles;
 use Illuminate\Http\Request;
 use App\Models\CategoryTreatment;
@@ -39,7 +40,8 @@ class HomeController extends Controller
 
     public function about()
     {
-        return view('about');
+        $doctors = Doctor::select('name', 'slug', 'position', 'short_desc', 'thumbnail_profile', 'avatar')->get();
+        return view('about', compact('doctors'));
     }
 
     public function allon4implant()

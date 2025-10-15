@@ -52,6 +52,7 @@
             <ul class="flex flex-row md:flex-col space-x-4 md:space-x-0 md:space-y-2 justify-around md:justify-start">
                 <li><a href="#" class="hover:text-gray-400">Career</a></li>
                 <li><a href="#" class="hover:text-gray-400">Social Activity</a></li>
+                <li><a href="{{ route(name: 'doctor.index') }}" class="hover:text-gray-400">Team</a></li>
                 <li><a href="#" class="hover:text-gray-400">FAQ</a></li>
             </ul>
         </div>

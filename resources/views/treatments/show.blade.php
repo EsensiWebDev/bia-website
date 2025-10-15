@@ -32,7 +32,7 @@
         {{-- Who Needs Treatment --}}
         @if ($treatment->whoNeeds->count() == 0)
         @else
-            <section class="bg-[#E9E6DD] py-16">
+            <section class="whoneed bg-[#E9E6DD] py-16">
                 <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center">
                     <h2 class="text-4xl font-[400] text-[#203B6E] mb-6 md:mb-12 text-center">
                         Who Need This Treatment

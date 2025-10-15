@@ -55,12 +55,63 @@
     </section>
 
     {{-- Our Doctors Section --}}
-    <section class="before-after bg-white py-16 px-4 mb-16">
-        <div class="container">
+    <section class="before-after bg-white py-16 px-4 mb-0 md:mb-24">
+        <div class="max-w-7xl mx-auto px-4">
             <div class="max-w-6xl mx-auto text-center mb-12">
                 <h2 class="text-4xl font-[400] text-[#203B6E]">Our Team</h2>
             </div>
-            <div class="bg-white w-full py-16 px-6 lg:px-20"></div>
+
+            {{-- === SLIDER UTAMA === --}}
+            <div class="swiper ours-doctors overflow-hidden mb-10">
+                <div class="swiper-wrapper">
+                    @foreach ($doctors as $doctor)
+                        <div class="swiper-slide">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center px-8 md:px-12 ">
+                                {{-- Foto --}}
+                                <div class="flex justify-center">
+                                    <img src="{{ asset('storage/' . $doctor->thumbnail_profile) }}"
+                                        alt="{{ $doctor->thumbnail_alt_text ?? $doctor->name }}"
+                                        class="object-cover h-[500px] w-full md:w-auto">
+                                </div>
+
+                                {{-- Detail --}}
+                                <div>
+                                    <h3 class="text-4xl font-bold font-inter text-[#000] mb-2 md:mb-4">{{ $doctor->name }}
+                                    </h3>
+                                    <p class="text-2xl text-[#414141] font-inter">{{ $doctor->position }}</p>
+                                    <div class="text-[#414141] leading-relaxed mb-6 mt-6 w-full md:w-3/4 h-46">
+                                        {!! $doctor->short_desc !!}
+                                    </div>
+                                    <a href="{{ route('doctor.show', $doctor->slug) }}"
+                                        class="inline-block bg-[#7DB8D8] hover:bg-[#6ca7c8] text-white px-6 py-3 font-semibold transition">
+                                        MORE
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+
+                <!-- Navigation -->
+                <div class="swiper-button-next !w-6 !h-6 !text-[#203B6E] stroke-[#203B6E]"></div>
+                <div class="swiper-button-prev !w-6 !h-6 !text-[#203B6E] stroke-[#203B6E]"></div>
+            </div>
+
+            {{-- === THUMBNAIL SLIDER === --}}
+            <hr class="text-gray-300 mb-8">
+            <div class="swiper doctors-thumbs overflow-hidden">
+                <div class="swiper-wrapper">
+                    @foreach ($doctors as $doctor)
+                        <div class="swiper-slide text-center cursor-pointer">
+                            <img src="{{ asset('storage/' . $doctor->avatar) }}"
+                                alt="{{ $doctor->thumbnail_alt_text ?? $doctor->name }}"
+                                class="w-32 h-32 object-cover mx-auto border-2 border-transparent hover:border-blue-500 transition">
+                            <h4 class="mt-3 font-semibold font-inter text-[#000]">{{ $doctor->name }}</h4>
+                            <p class="text-[#414141]">{{ $doctor->position }}</p>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
         </div>
     </section>
 
