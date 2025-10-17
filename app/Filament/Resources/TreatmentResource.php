@@ -151,6 +151,8 @@ class TreatmentResource extends Resource
                                     ->placeholder('Enter alt text for the thumbnail')
                                     ->columnSpanFull()
                                     ->reactive()
+                                    ->maxLength(100)
+                                    ->extraInputAttributes(['maxlength' => 100])
                                     ->hidden(fn($get) => ! $get('thumbnail')),
 
                                 TextInput::make('contact')
@@ -162,9 +164,9 @@ class TreatmentResource extends Resource
                                 Section::make('Search Engine Optimization (SEO)')
                                     ->collapsed()
                                     ->schema([
-                                        TextInput::make('meta_title')->label('Meta Title')->maxLength(255),
-                                        TextInput::make('meta_keywords')->label('Meta Keywords')->maxLength(255),
-                                        Textarea::make('meta_description')->label('Meta Description')->maxLength(160)->rows(2),
+                                        TextInput::make('meta_title')->label('Meta Title')->maxLength(100)->extraInputAttributes(['maxlength' => 100]),
+                                        TextInput::make('meta_keywords')->label('Meta Keywords')->maxLength(100)->extraInputAttributes(['maxlength' => 100]),
+                                        Textarea::make('meta_description')->label('Meta Description')->maxLength(160)->extraInputAttributes(['maxlength' => 160])->rows(2),
                                     ])->compact(), // Menggunakan compact untuk tampilan yang lebih kecil
                             ])
                             ->collapsible(false)->grow(false),

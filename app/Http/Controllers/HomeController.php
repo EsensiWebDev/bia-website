@@ -48,4 +48,9 @@ class HomeController extends Controller
     {
         return view('allon4implant');
     }
+
+    public function faq()
+    {
+        return view('faq');
+    }
 }

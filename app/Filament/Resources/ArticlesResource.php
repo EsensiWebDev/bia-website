@@ -132,6 +132,8 @@ class ArticlesResource extends Resource
                         ->label('Thumbnail Alt Text')
                         ->placeholder('Enter alt text for the thumbnail')
                         ->columnSpanFull()
+                        ->maxLength(100)
+                        ->extraInputAttributes(['maxlength' => 100])
                         ->reactive()
                         ->hidden(fn($get) => ! $get('thumbnail')),
 
@@ -153,8 +155,10 @@ class ArticlesResource extends Resource
                 ->schema([
                     // Meta Description & Keywords
                     Group::make([
-                        TextInput::make('meta_title'),
-                        TextInput::make('meta_keywords'),
+                        TextInput::make('meta_title')->maxLength(100)
+                            ->extraInputAttributes(['maxlength' => 100])->label('Meta Title'),
+                        TextInput::make('meta_keywords')->maxLength(100)
+                            ->extraInputAttributes(['maxlength' => 100])->label('Meta Keywords'),
                     ])->columns(2),
 
                     Textarea::make('meta_description')

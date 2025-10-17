@@ -14,7 +14,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Signika:wght@400;700&display=swap"
         rel="stylesheet">
-
+    @livewireStyles
 </head>
 
 <body class="relative">
@@ -34,6 +34,7 @@
     </div>
     @vite('resources/js/app.js')
     @filamentScripts
+    @livewireScripts
 </body>
 
 </html>

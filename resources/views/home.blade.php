@@ -110,7 +110,7 @@
                     <div class="flex flex-col items-center text-center">
                         <img src="{{ Vite::asset('resources/images/wcu/wcu1.webp') }}" alt="Pain-Free Treatment"
                             class="w-auto h-24 mb-4">
-                        <h3 class="font-semibold mb-2">Pain-Free Treatment</h3>
+                        <h3 class="font-semibold mb-2 font-montserrat">Pain-Free Treatment</h3>
                         <p>We offer gentle dental care to help everyone, even those with
                             dental anxiety, feel safe and comfortable throughout the process.</p>
                     </div>
@@ -118,7 +118,7 @@
                     <div class="flex flex-col items-center text-center">
                         <img src="{{ Vite::asset('resources/images/wcu/wcu2.webp') }}" alt="Globally Trained Dentists"
                             class="w-auto h-24 mb-4">
-                        <h3 class="font-semibold mb-2">Globally Trained Dentists</h3>
+                        <h3 class="font-semibold mb-2 font-montserrat">Globally Trained Dentists</h3>
                         <p>Our dentists have completed courses and training in various
                             countries to deliver high quality and up-to-date care.</p>
                     </div>
@@ -126,7 +126,7 @@
                     <div class="flex flex-col items-center text-center">
                         <img src="{{ Vite::asset('resources/images/wcu/wcu3.webp') }}" alt="Expert in Implantology"
                             class="w-auto h-24 mb-4">
-                        <h3 class="font-semibold mb-2">Expert in Implantology</h3>
+                        <h3 class="font-semibold mb-2 font-montserrat">Expert in Implantology</h3>
                         <p>Our Chief Clinical Officer and implantologist, Dr. Andhika, is the
                             first dentist in Indonesia to graduate with a Master of Science in Oral Implantology, delivering
                             exceptional and long-lasting results.</p>
@@ -135,7 +135,7 @@
                     <div class="flex flex-col items-center text-center">
                         <img src="{{ Vite::asset('resources/images/wcu/wcu4.webp') }}" alt="Advanced Digital Technology"
                             class="w-auto h-24 mb-4">
-                        <h3 class="font-semibold mb-2">Advanced Digital Technology</h3>
+                        <h3 class="font-semibold mb-2 font-montserrat">Advanced Digital Technology</h3>
                         <p>Experience premium dental care with the latest digital technology,
                             from 3D scanning to guided implant surgery. Faster, safer, and pain-free procedures with
                             precise, personalized results.</p>

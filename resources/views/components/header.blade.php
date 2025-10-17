@@ -20,16 +20,16 @@
             <!-- Desktop Menu -->
             <div
                 class="hidden {{ request()->routeIs('home') ? 'text-white' : 'text-[#203B6E]' }}  md:flex space-x-8 items-center">
-                <a href="/" class=" hover:text-gray-300 font-medium">Home</a>
+                <a href="{{ route('home') }}" class=" hover:text-gray-300 font-medium">Home</a>
                 <a href="{{ route('treatments.index') }}" class=" hover:text-gray-300 font-medium">Treatments</a>
-                <a href="/allon4implant" class=" hover:text-gray-300 font-medium">All-on-4 Implant</a>
+                <a href="{{ route('allon4implant') }}" class=" hover:text-gray-300 font-medium">All-on-4 Implant</a>
                 <a href="{{ route('pricing.index') }}" class=" hover:text-gray-300 font-medium">Pricing</a>
                 <a href="{{ route('about') }}" class=" hover:text-gray-300 font-medium">About Us</a>
                 <a href="{{ route('blog.index') }}" class=" hover:text-gray-300 font-medium">Blog</a>
 
                 <!-- Book Now Button -->
                 <div class="hidden md:flex">
-                    <a href="#"
+                    <a href="{{ route('booknow') }}"
                         class="bg-[#7DB8D8] hover:bg-[#6ca7c8] text-white px-6 py-3 font-semibold transition">
                         BOOK NOW
                     </a>
@@ -60,14 +60,14 @@
 
     <!-- Mobile Menu -->
     <div id="mobile-menu" class="hidden md:hidden bg-[#203B6E] pb-3">
-        <a href="/" class="block px-4 py-2 text-white hover:bg-gray-700">Home</a>
+        <a href="{{ route('home') }}" class="block px-4 py-2 text-white hover:bg-gray-700">Home</a>
         <a href="{{ route('treatments.index') }}" class="block px-4 py-2 text-white hover:bg-gray-700">Treatments</a>
         <a href="{{ route('allon4implant') }}" class="block px-4 py-2 text-white hover:bg-gray-700">All-on-4
             Implant</a>
         <a href="{{ route('pricing.index') }}" class="block px-4 py-2 text-white hover:bg-gray-700">Pricing</a>
         <a href="{{ route('about') }}" class="block px-4 py-2 text-white hover:bg-gray-700">About Us</a>
         <a href="{{ route('blog.index') }}" class="block px-4 py-2 text-white hover:bg-gray-700">Blog</a>
-        <a href="#"
+        <a href="{{ route('booknow') }}"
             class="block px-4 py-2 mr-2 ml-2 text-white bg-[#7DB8D8] hover:bg-[#6ca7c8] mt-2 rounded-md font-semibold">
             Book Now
         </a>
