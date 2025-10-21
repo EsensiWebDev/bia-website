@@ -131,7 +131,7 @@
                     Anesthesia, BIA Farma, BIA X-Ray, and BIA Dental Lab, you can complete your treatment here.
                     No outside referrals needed.
                 </p>
-                <a href="#meet-dentist"
+                <a href="{{ route(name: 'facilities') }}"
                     class="inline-block bg-[#7DB8D8] hover:bg-[#6ca7c8] text-white px-6 py-3 font-semibold transition">
                     MORE
                 </a>

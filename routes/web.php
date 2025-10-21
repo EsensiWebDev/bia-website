@@ -14,6 +14,7 @@ Route::get('/', [HomeController::class, 'home'])->name('home');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/allon4implant', [HomeController::class, 'allon4implant'])->name('allon4implant');
 Route::get('/faq', [HomeController::class, 'faq'])->name('faq');
+Route::get('/facilities', [HomeController::class, 'facilities'])->name('facilities');
 
 
 // TREATMENTS

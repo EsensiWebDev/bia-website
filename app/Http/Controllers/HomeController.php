@@ -53,4 +53,9 @@ class HomeController extends Controller
     {
         return view('faq');
     }
+
+    public function facilities()
+    {
+        return view('facilities');
+    }
 }
