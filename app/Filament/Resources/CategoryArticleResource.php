@@ -104,10 +104,14 @@ class CategoryArticleResource extends Resource
                             ->placeholder('Enter alt text for the thumbnail')
                             ->required(false)
                             ->reactive()
+                            ->maxLength(100)
+                            ->extraInputAttributes(['maxlength' => 100])
                             ->hidden(fn($get) => !$get('thumbnail')),
 
                         Textarea::make('description')
                             ->label('Description')
+                            ->maxLength(450)
+                            ->extraInputAttributes(['maxlength' => 450])
                             ->rows(3),
 
                     ])->columns(1)

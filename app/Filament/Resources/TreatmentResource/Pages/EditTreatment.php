@@ -2,9 +2,11 @@
 
 namespace App\Filament\Resources\TreatmentResource\Pages;
 
-use App\Filament\Resources\TreatmentResource;
 use Filament\Actions;
+use Illuminate\Support\Arr;
+use Illuminate\Database\Eloquent\Model;
 use Filament\Resources\Pages\EditRecord;
+use App\Filament\Resources\TreatmentResource;
 
 class EditTreatment extends EditRecord
 {

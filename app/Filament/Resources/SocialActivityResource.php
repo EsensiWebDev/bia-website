@@ -36,7 +36,7 @@ class SocialActivityResource extends Resource
 {
     protected static ?string $model = SocialActivity::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-hand-raised';
     protected static ?string $navigationLabel = 'Social Activities';
     protected static ?string $slug = 'social-activities';
 

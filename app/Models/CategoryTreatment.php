@@ -27,32 +27,72 @@ class CategoryTreatment extends Model
             $this->attributes['thumbnail'] = null;
         }
     }
+
     protected static function booted()
     {
-        // Saat update (Hapus file lama jika diganti atau dikosongkan)
-        static::updating(function ($categoryTreatment) {
-            $oldFile = $categoryTreatment->getOriginal('thumbnail');
-            $newFile = $categoryTreatment->thumbnail;
+        // Hapus file lama jika diganti atau dikosongkan
+        static::updating(function ($categoryTreatments) {
+            $oldFile = $categoryTreatments->getOriginal('thumbnail');
+            $newFile = $categoryTreatments->thumbnail;
 
             // Periksa apakah field 'thumbnail' berubah
-            if ($categoryTreatment->isDirty('thumbnail')) {
+            if ($categoryTreatments->isDirty('thumbnail')) {
 
-                // File lama ada, dan path-nya berbeda dari file baru (File baru sudah di-upload di storage)
-                if ($oldFile && $oldFile !== $newFile && Storage::disk('public')->exists($oldFile)) {
-                    Storage::disk('public')->delete($oldFile);
+                // Cek apakah ada file lama yang harus dihapus
+                if ($oldFile && Storage::disk('public')->exists($oldFile)) {
+
+                    // File lama ada, dan file baru bukan NULL. Hapus file lama sebelum path baru disimpan.
+                    if ($newFile !== $oldFile) {
+                        Storage::disk('public')->delete($oldFile);
+                    }
+
+                    // File DIKOSONGKAN
+                    if (is_null($newFile)) {
+                        Storage::disk('public')->delete($oldFile);
+                    }
                 }
 
-                // File baru NULL, tapi file lama ada
-                if (is_null($newFile) && $oldFile && Storage::disk('public')->exists($oldFile)) {
-                    Storage::disk('public')->delete($oldFile);
+                // Jika thumbnail dikosongkan, pastikan alt text juga dikosongkan
+                if (is_null($newFile)) {
+                    $categoryTreatments->thumbnail_alt_text = null;
                 }
             }
         });
 
-        // Saat delete record (Hapus file)
-        static::deleting(function ($categoryTreatment) {
-            if ($categoryTreatment->thumbnail && Storage::disk('public')->exists($categoryTreatment->thumbnail)) {
-                Storage::disk('public')->delete($categoryTreatment->thumbnail);
+        // Rename file thumbnail jika SLUG berubah
+        static::updated(function ($categoryTreatments) {
+            $oldSlug = $categoryTreatments->getOriginal('slug');
+            $newSlug = $categoryTreatments->slug;
+            $thumbnailPath = $categoryTreatments->thumbnail;
+
+            // Periksa apakah SLUG berubah, dan file thumbnail saat ini ada.
+            if ($oldSlug && $oldSlug !== $newSlug && $thumbnailPath) {
+
+                $disk = Storage::disk('public');
+
+                // Dapatkan direktori dan ekstensi dari path lama
+                $directory = pathinfo($thumbnailPath, PATHINFO_DIRNAME); // Contoh: cat-treatments
+                $extension = pathinfo($thumbnailPath, PATHINFO_EXTENSION); // Contoh: jpg
+
+                // Buat nama file baru berdasarkan slug baru
+                $newFilename = "{$newSlug}.{$extension}";
+                $newPath = "{$directory}/{$newFilename}";
+
+                // pastikan file lama ada dan path baru berbeda
+                if ($disk->exists($thumbnailPath) && $thumbnailPath !== $newPath) {
+                    $disk->move($thumbnailPath, $newPath);
+
+                    // Update path baru di database
+                    $categoryTreatments->thumbnail = $newPath;
+                    $categoryTreatments->saveQuietly();
+                }
+            }
+        });
+
+        // Saat delete record
+        static::deleting(function ($categoryTreatments) {
+            if ($categoryTreatments->thumbnail && Storage::disk('public')->exists($categoryTreatments->thumbnail)) {
+                Storage::disk('public')->delete($categoryTreatments->thumbnail);
             }
         });
     }

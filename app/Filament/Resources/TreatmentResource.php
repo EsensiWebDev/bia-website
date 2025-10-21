@@ -343,9 +343,18 @@ class TreatmentResource extends Resource
                         ->relationship('additionals')
                         ->label(false)
                         ->schema([
-                            Textarea::make('desc')
-                                ->rows(3)
+                            RichEditor::make('desc')
                                 ->label('Description')
+                                ->toolbarButtons([
+                                    'bulletList',
+                                    'orderedList',
+                                    'bold',
+                                    'italic',
+                                    'link',
+                                    'underline',
+                                    'undo',
+                                    'redo',
+                                ])
                                 ->maxLength(500),
                         ])
                         ->minItems(0)
@@ -354,7 +363,17 @@ class TreatmentResource extends Resource
                         ->reorderableWithButtons()
                         ->createItemButtonLabel('Add Info Item')
                         ->columns(1)
-                        ->dehydrated(fn($state) => filled($state)) // hanya simpan kalau ada isinya
+                        ->mutateRelationshipDataBeforeCreateUsing(function ($data) {
+                            $desc = trim(strip_tags((string) data_get($data, 'desc')));
+                            return $desc === '' ? null : $data; // null → tidak disimpan
+                        })
+
+                        // 🔍 Filter juga sebelum update (opsional)
+                        ->mutateRelationshipDataBeforeSaveUsing(function ($data) {
+                            $desc = trim(strip_tags((string) data_get($data, 'desc')));
+                            return $desc === '' ? null : $data;
+                        })
+                        ->dehydrated(fn($state) => filled($state)),
                 ]),
         ]);
     }

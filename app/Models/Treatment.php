@@ -89,6 +89,14 @@ class Treatment extends Model
      */
     protected static function booted()
     {
+        // Hapus additionals jika tanpa deskripsi
+        static::saved(function ($treatment) {
+            $treatment->additionals()
+                ->whereNull('desc')
+                ->orWhere('desc', '')
+                ->delete();
+        });
+
         // Hapus thumbnail utama lama
         static::updating(function ($treatment) {
             if ($treatment->isDirty('thumbnail')) {

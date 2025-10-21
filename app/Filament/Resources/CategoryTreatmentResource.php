@@ -108,6 +108,8 @@ class CategoryTreatmentResource extends Resource
                                 'redo',
                             ])
                             ->label('Description')
+                            ->maxLength(450)
+                            ->extraInputAttributes(['maxlength' => 450])
                             ->required()
                             ->columnSpanFull(),
 

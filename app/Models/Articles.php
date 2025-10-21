@@ -62,10 +62,7 @@ class Articles extends Model
             $disk = Storage::disk('public');
             $tempUploadFolder = 'articles/temporary-upload'; // <-- Folder yang dicek
 
-            // ... (Logic Thumbnail dipertahankan) ...
-
             // --- LOGIC CONTENT (Gambar yang sudah di DB dan yang baru di-upload) ---
-
             if ($article->isDirty('content')) {
                 $oldContent = $article->getOriginal('content') ?? '';
                 $newContent = $article->content ?? '';
@@ -74,7 +71,7 @@ class Articles extends Model
                 preg_match_all('/\/storage\/([^"\']+)/i', $newContent, $newImagesMatches);
                 $newImages = array_unique(array_filter($newImagesMatches[1] ?? [], fn($path) => str_starts_with($path, 'articles/')));
 
-                // 1. PEMBESIHAN GAMBAR LAMA (DARI DB)
+                // 1. PEMBERSIHAN GAMBAR LAMA (DARI DB)
                 preg_match_all('/\/storage\/([^"\']+)/i', $oldContent, $oldImagesMatches);
                 $oldImages = array_unique(array_filter($oldImagesMatches[1] ?? [], fn($path) => str_starts_with($path, 'articles/')));
 
@@ -85,24 +82,32 @@ class Articles extends Model
                     }
                 }
 
-                // 2. PEMBESIHAN DRAFT IMAGES (DARI FOLDER TEMPORARY)
+                // 2. PEMBERSIHAN DRAFT IMAGES (DARI FOLDER TEMPORARY)
                 if ($disk->exists($tempUploadFolder)) {
                     $tempFiles = $disk->allFiles($tempUploadFolder);
-
                     foreach ($tempFiles as $tempPath) {
-                        // Cek apakah file temporary TIDAK ADA di konten BARU
-                        if (!in_array($tempPath, $newImages)) {
-                            if ($disk->exists($tempPath)) {
-                                $disk->delete($tempPath);
-                            }
+                        if (!in_array($tempPath, $newImages) && $disk->exists($tempPath)) {
+                            $disk->delete($tempPath);
                         }
+                    }
+                }
+            }
+
+            // --- LOGIC THUMBNAIL: Hapus file lama jika thumbnail diganti atau dikosongkan ---
+            if ($article->isDirty('thumbnail')) {
+                if ($oldThumbnail && $disk->exists($oldThumbnail)) {
+                    if ($newThumbnail !== $oldThumbnail) {
+                        $disk->delete($oldThumbnail);
+                    }
+                    if (is_null($newThumbnail)) {
+                        $disk->delete($oldThumbnail);
                     }
                 }
             }
         });
 
         // =========================================================================
-        // 2. OBSERVER: UPDATED (Memindahkan folder jika slug berubah/pertama kali)
+        // 2. OBSERVER: UPDATED (Memindahkan folder jika slug berubah / pertama kali)
         // =========================================================================
         static::updated(function ($article) {
             $slug = $article->slug;
@@ -112,9 +117,8 @@ class Articles extends Model
             $tempUploadFolder = 'articles/temporary-upload';
 
             $needsSave = false;
-
-            // Ambil list gambar yang TERSISA di konten baru
             $content = $article->content ?? '';
+
             preg_match_all('/\/storage\/([^"\']+)/i', $content, $newMatches);
             $newImages = array_unique(array_filter($newMatches[1] ?? [], fn($path) => str_starts_with($path, 'articles/')));
 
@@ -123,16 +127,12 @@ class Articles extends Model
 
             // Logic pemindahan hanya berjalan jika slug diisi/berubah
             if ($hasSlugChanged || $isFirstSaveWithSlug) {
-
-                // --- Tentukan Sumber Folder ---
                 $sourceDirToMove = [];
 
-                // Jika ini CREATE pertama kali, sumber utama adalah folder temporary
                 if ($isFirstSaveWithSlug && $disk->exists($tempUploadFolder)) {
                     $sourceDirToMove[] = $tempUploadFolder;
                 }
 
-                // Jika slug berubah (saat UPDATE), sumber adalah folder slug lama
                 if ($hasSlugChanged && $disk->exists("articles/{$oldSlug}")) {
                     $sourceDirToMove[] = "articles/{$oldSlug}";
                 }
@@ -148,20 +148,21 @@ class Articles extends Model
                 $updatedThumbnail = $article->thumbnail;
 
                 foreach ($sourceDirToMove as $oldPathPrefix) {
-
-                    // Pindahkan thumbnail (jika masih di folder lama/temporary)
+                    // --- Pindahkan thumbnail ke folder baru ---
                     $oldThumbnailPath = $article->getOriginal('thumbnail');
                     if ($oldThumbnailPath && str_starts_with($oldThumbnailPath, $oldPathPrefix) && $disk->exists($oldThumbnailPath)) {
-                        $filename = basename($oldThumbnailPath);
-                        $newPath = "{$dir}/{$filename}";
-                        if ($oldThumbnailPath !== $newPath) {
-                            $disk->move($oldThumbnailPath, $newPath);
-                            $updatedThumbnail = $newPath;
+                        $extension = pathinfo($oldThumbnailPath, PATHINFO_EXTENSION);
+                        $newThumbnailPath = "{$dir}/{$slug}.{$extension}";
+
+                        // Jika thumbnail lama punya nama berbeda, rename + pindahkan
+                        if ($oldThumbnailPath !== $newThumbnailPath) {
+                            $disk->move($oldThumbnailPath, $newThumbnailPath);
+                            $updatedThumbnail = $newThumbnailPath;
                             $needsSave = true;
                         }
                     }
 
-                    // Pindahkan content images dan perbarui HTML
+                    // --- Pindahkan semua gambar di content ke folder slug baru ---
                     foreach ($newImages as $img) {
                         if (str_starts_with($img, $oldPathPrefix) && $disk->exists($img)) {
                             $filename = basename($img);
@@ -175,13 +176,13 @@ class Articles extends Model
                         }
                     }
 
-                    // Hapus folder lama (temporary/slug lama) jika sudah kosong
+                    // --- Hapus folder lama jika sudah kosong ---
                     if ($oldPathPrefix !== $dir && $disk->exists($oldPathPrefix) && count($disk->allFiles($oldPathPrefix)) === 0) {
                         $disk->deleteDirectory($oldPathPrefix);
                     }
                 }
 
-                // Simpan content dan thumbnail jika ada path yang diubah
+                // --- Simpan ulang jika ada perubahan path ---
                 if ($needsSave) {
                     $article->content = $updatedContent;
                     $article->thumbnail = $updatedThumbnail;
@@ -189,11 +190,12 @@ class Articles extends Model
                 }
             }
 
-            // Simpan content jika ada perubahan yang tersisa
+            // --- Pastikan content tersimpan jika masih ada perubahan ---
             if ($article->isDirty('content')) {
                 $article->saveQuietly();
             }
         });
+
         // =========================================================================
         // 3. OBSERVER: DELETING (Menghapus folder utama saat record dihapus)
         // =========================================================================
@@ -204,6 +206,7 @@ class Articles extends Model
                     Storage::disk('public')->deleteDirectory($dir);
                 }
             }
+
             // Hapus juga thumbnail yang mungkin berada di luar folder slug
             if ($article->thumbnail && !str_starts_with($article->thumbnail, "articles/{$article->slug}")) {
                 if (Storage::disk('public')->exists($article->thumbnail)) {

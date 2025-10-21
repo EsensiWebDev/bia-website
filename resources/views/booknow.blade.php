@@ -220,9 +220,8 @@
 
                     <div class="mt-10">
                         <button type="submit"
-                            class="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white
-                shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-indigo-600">
-                            Let's talk
+                            class="inline-block bg-[#7DB8D8] hover:bg-[#6ca7c8] text-white px-6 py-3 font-semibold transition">
+                            SUBMIT
                         </button>
                     </div>
                 </form>
@@ -297,8 +296,8 @@
                 <div class="bg-[#AFF4C6] px-2 py-4 rounded-2xl"><i
                         class="text-[3.5em] text-[#14AE5C] fab fa-whatsapp"></i></div>
                 <div>
-                    <h2 class="text-[#000] font-semibold text-xl font-montserrat ">Whatsapp</h2>
-                    <p class="text-[#000] text-xl">+62 1234567890</p>
+                    <h2 class="text-[#000] font-semibold text-xl font-montserrat mb-2">Whatsapp</h2>
+                    <p class="text-[#000] text-lg">+62 1234567890</p>
                 </div>
             </div>
 
@@ -308,8 +307,8 @@
                 <div class="bg-[#FFE8A3] px-2 py-4 rounded-2xl"><i
                         class="text-[3.5em] text-[#E6A204] fa-regular fa-envelope"></i></div>
                 <div>
-                    <h2 class="text-[#000] font-semibold text-xl font-montserrat ">Email</h2>
-                    <p class="text-[#000] text-xl">email@email.com</p>
+                    <h2 class="text-[#000] font-semibold text-xl font-montserrat mb-2">Email</h2>
+                    <p class="text-[#000] text-lg">email@email.com</p>
                 </div>
             </div>
 
@@ -319,8 +318,8 @@
                 <div class="bg-[#AFF4C6] px-2 py-4 rounded-2xl"><i
                         class="text-[3.5em] text-[#14AE5C] fa-solid fa-phone"></i></div>
                 <div>
-                    <h2 class="text-[#000] font-semibold text-xl font-montserrat ">Phone</h2>
-                    <p class="text-[#000] text-xl">+62 123456789</p>
+                    <h2 class="text-[#000] font-semibold text-xl font-montserrat mb-2">Phone</h2>
+                    <p class="text-[#000] text-lg">+62 123456789</p>
                 </div>
             </div>
         </div>

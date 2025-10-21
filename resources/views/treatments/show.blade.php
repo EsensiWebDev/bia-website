@@ -70,7 +70,7 @@
                                 <div class="flex flex-col items-center text-center px-4">
                                     @if ($need->thumbnail)
                                         <img src="{{ asset('storage/' . $need->thumbnail) }}" alt="{{ $need->desc }}"
-                                            class="w-16 h-16 mb-6 object-contain">
+                                            class="w-28 h-28 mb-6 object-contain">
                                     @endif
                                     <div class="text-sm md:text-base text-[#273746] max-w-sm">
                                         {!! $need->desc !!}
@@ -108,7 +108,7 @@
         @else
             <section class="timeframe-treatments bg-white py-16 px-4 m-auto">
                 <div class="max-w-7xl mx-auto text-center">
-                    <h2 class="text-4xl font-[400] text-[#203B6E] md:mb-12 text-center">
+                    <h2 class="text-4xl font-[400] text-[#203B6E] mb-6 md:mb-12 text-center">
                         Treatment Time Frame
                     </h2>
 
@@ -147,7 +147,7 @@
                                                 class="flex flex-col items-center justify-between text-center bg-white p-4 rounded-2xl h-full w-[90%] lg:w-[350px] mx-auto">
                                                 <div>
                                                     <img src="{{ asset('storage/' . $item->thumbnail) }}"
-                                                        alt="{{ $item->title }}" class="w-20 h-20 mb-6 mx-auto">
+                                                        alt="{{ $item->title }}" class="w-28 h-28 mb-6 mx-auto">
                                                     <h4 class="text-2xl font-montserrat text-[#000] mb-4">
                                                         {!! $item->title !!}</h4>
                                                 </div>
@@ -193,7 +193,7 @@
 
                                             <div class="w-full md:w-1/3 flex flex-col items-center mb-6 md:mb-0">
                                                 <img src="{{ asset('storage/' . $item->thumbnail) }}"
-                                                    alt="{{ $item->title }}" class="w-20 h-20 mb-4">
+                                                    alt="{{ $item->title }}" class="w-28 h-28 mb-4">
                                                 <h4 class="w-full md:w-2/3 text-2xl font-montserrat text-[#000] mb-4">
                                                     {!! $item->title !!}
                                                 </h4>

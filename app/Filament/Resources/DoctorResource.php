@@ -44,7 +44,8 @@ class DoctorResource extends Resource
                                     ->schema([
                                         TextInput::make('name')
                                             ->required()
-                                            ->maxLength(255)
+                                            ->maxLength(160)
+                                            ->extraInputAttributes(['maxlength' => 160])
                                             ->reactive()
                                             ->afterStateUpdated(function ($state, Set $set, $get) {
                                                 if (blank($get('slug'))) {
@@ -76,8 +77,8 @@ class DoctorResource extends Resource
                                     ]),
                                 Grid::make(2)
                                     ->schema([
-                                        TextInput::make('position')->maxLength(255),
-                                        TextInput::make('language')->maxLength(255)->placeholder('e.g. English, Bahasa Indonesia'),
+                                        TextInput::make('position')->maxLength(160)->extraInputAttributes(['maxlength' => 160])->required(),
+                                        TextInput::make('language')->maxLength(160)->extraInputAttributes(['maxlength' => 160])->placeholder('e.g. English, Bahasa Indonesia'),
                                     ]),
 
                                 RichEditor::make('short_desc')
@@ -156,6 +157,8 @@ class DoctorResource extends Resource
                                         ->label('Thumbnail Alt Text')
                                         ->placeholder('Enter alt text for the thumbnail')
                                         ->columnSpanFull()
+                                        ->maxLength(160)
+                                        ->extraInputAttributes(['maxlength' => 160])
                                         ->reactive()
                                         ->hidden(fn($get) => ! $get('thumbnail_profile')),
 
@@ -164,9 +167,9 @@ class DoctorResource extends Resource
                                     Section::make('Search Engine Optimization (SEO)')
                                         ->collapsed()
                                         ->schema([
-                                            TextInput::make('meta_title')->label('Meta Title')->maxLength(255),
-                                            TextInput::make('meta_keywords')->label('Meta Keywords')->maxLength(255),
-                                            Textarea::make('meta_description')->label('Meta Description')->maxLength(160)->rows(2),
+                                            TextInput::make('meta_title')->label('Meta Title')->maxLength(100)->extraInputAttributes(['maxlength' => 100]),
+                                            TextInput::make('meta_keywords')->label('Meta Keywords')->maxLength(100)->extraInputAttributes(['maxlength' => 100]),
+                                            Textarea::make('meta_description')->label('Meta Description')->maxLength(160)->extraInputAttributes(['maxlength' => 160])->rows(4),
                                         ])->compact(), // Menggunakan compact untuk tampilan yang lebih kecil
                                 ])
                                 ->collapsible(false)->grow(false),
@@ -188,14 +191,17 @@ class DoctorResource extends Resource
                                 TextInput::make('education_title')
                                     ->label('Education Title')
                                     ->placeholder('e.g. Dentistry Faculty in Mahasaraswati University, Bali')
-                                    ->maxLength(255),
+                                    ->maxLength(160)
+                                    ->extraInputAttributes(['maxlength' => 160])
+                                    ->required(),
 
                                 TextInput::make('graduation_year')
                                     ->label('Graduation Year')
                                     ->numeric()
                                     ->minValue(1900)
                                     ->maxValue(date('Y'))
-                                    ->nullable(),
+                                    ->nullable()
+                                    ->required(),
                             ])
                             ->columns(2)
                             ->collapsible()
@@ -238,13 +244,17 @@ class DoctorResource extends Resource
                                 TextInput::make('certification_title')
                                     ->label('Certifications Title')
                                     ->placeholder('e.g. Megagen Implant Short Course in Korea')
-                                    ->maxLength(255),
+                                    ->maxLength(255)
+                                    ->maxLength(160)
+                                    ->extraInputAttributes(['maxlength' => 160])
+                                    ->required(),
                                 TextInput::make('certification_year')
                                     ->label('Certifications Year')
                                     ->numeric()
                                     ->minValue(1900)
                                     ->maxValue(date('Y'))
-                                    ->nullable(),
+                                    ->nullable()
+                                    ->required(),
                             ])
                             ->columns(2)
                             ->collapsible()
@@ -286,6 +296,8 @@ class DoctorResource extends Resource
                                 Grid::make(2)->schema([
                                     RichEditor::make('association_name')
                                         ->toolbarButtons(['bold', 'italic', 'link', 'underline', 'undo', 'redo'])
+                                        ->maxLength(160)
+                                        ->extraInputAttributes(['maxlength' => 160])
                                         ->required(),
                                     FileUpload::make('img')
                                         ->label('Association Image')

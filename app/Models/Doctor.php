@@ -39,7 +39,7 @@ class Doctor extends Model
 
     public function associations()
     {
-        return $this->hasMany(DoctorAssociation::class);
+        return $this->hasMany(DoctorAssociation::class)->orderBy('order', 'asc');
     }
     public function setAvatarAttribute($value)
     {

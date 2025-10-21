@@ -117,7 +117,7 @@
 
 
             @php
-                $certifications = $doctor->certifications->sortByDesc('order')->values();
+                $associations = $doctor->associations->sortBy('order')->values();
                 $count = $doctor->associations->count();
                 $chunks = collect();
 

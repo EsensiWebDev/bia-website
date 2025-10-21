@@ -55,6 +55,7 @@
                 <li><a href="{{ route(name: 'achievements.index') }}" class="hover:text-gray-400">Achievement</a></li>
                 <li><a href="{{ route(name: 'doctor.index') }}" class="hover:text-gray-400">Team</a></li>
                 <li><a href="{{ route(name: 'faq') }}" class="hover:text-gray-400">FAQ</a></li>
+                <li><a href="/admin/login" class="hover:text-gray-400">Login</a></li>
             </ul>
         </div>
 

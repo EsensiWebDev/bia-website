@@ -37,7 +37,7 @@ class AchievementResource extends Resource
 {
     protected static ?string $model = Achievements::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-trophy';
 
     public static function form(Form $form): Form
     {
@@ -172,7 +172,8 @@ class AchievementResource extends Resource
                                 TextInput::make('thumbnail_alt_text')
                                     ->label('Thumbnail Alt Text')
                                     ->placeholder('Enter alt text for the thumbnail')
-                                    ->columnSpanFull()
+                                    ->columnSpanFull()->maxLength(160)
+                                    ->extraInputAttributes(['maxlength' => 160])
                                     ->reactive()
                                     ->hidden(fn($get) => ! $get('thumbnail')),
 
@@ -180,12 +181,15 @@ class AchievementResource extends Resource
                                 Section::make('Search Engine Optimization (SEO)')
                                     ->collapsed(0)
                                     ->schema([
-                                        TextInput::make('meta_title'),
-                                        TextInput::make('meta_keywords'),
+                                        TextInput::make('meta_title')->maxLength(100)
+                                            ->extraInputAttributes(['maxlength' => 100]),
+                                        TextInput::make('meta_keywords')->maxLength(100)
+                                            ->extraInputAttributes(['maxlength' => 100]),
 
                                         Textarea::make('meta_description')
                                             ->label('Meta Description')
                                             ->maxLength(160)
+                                            ->extraInputAttributes(['maxlength' => 160])
                                             ->rows(3),
                                     ])->compact(), // Menggunakan compact untuk tampilan yang lebih kecil
                             ])

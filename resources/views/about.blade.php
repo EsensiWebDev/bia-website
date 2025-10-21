@@ -83,7 +83,7 @@
                                             {{ $doctor->name }}
                                         </h3>
                                         <p class="text-2xl text-[#414141] font-inter">{{ $doctor->position }}</p>
-                                        <div class="text-[#414141] leading-relaxed mb-6 mt-6 w-full md:w-3/4 h-46">
+                                        <div class="text-[#414141] leading-relaxed mb-6 mt-6 w-full md:w-3/4 min-h-46">
                                             {!! $doctor->short_desc !!}
                                         </div>
                                         <a href="{{ route('doctor.show', $doctor->slug) }}"

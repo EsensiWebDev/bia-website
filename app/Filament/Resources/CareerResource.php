@@ -37,7 +37,7 @@ class CareerResource extends Resource
 {
     protected static ?string $model = Career::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-briefcase';
 
     public static function form(Form $form): Form
     {
@@ -154,12 +154,15 @@ class CareerResource extends Resource
                                     Section::make('Search Engine Optimization (SEO)')
                                         ->collapsed(0)
                                         ->schema([
-                                            TextInput::make('meta_title'),
-                                            TextInput::make('meta_keywords'),
+                                            TextInput::make('meta_title')->maxLength(100)
+                                                ->extraInputAttributes(['maxlength' => 100]),
+                                            TextInput::make('meta_keywords')->maxLength(100)
+                                                ->extraInputAttributes(['maxlength' => 100]),
 
                                             Textarea::make('meta_description')
                                                 ->label('Meta Description')
                                                 ->maxLength(160)
+                                                ->extraInputAttributes(['maxlength' => 160])
                                                 ->rows(3),
                                         ])->compact(), // Menggunakan compact untuk tampilan yang lebih kecil
                                 ])
@@ -214,7 +217,7 @@ class CareerResource extends Resource
                             return "Recruitment Period: Not Specified";
                         }
                     })
-                    ->toggleable(),
+                    ->toggleable(isToggledHiddenByDefault: true),
 
                 TextColumn::make('created_at')
                     ->dateTime()
