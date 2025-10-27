@@ -20,7 +20,7 @@ class CTASection extends Component
         $stylesection = 'py-16 bg-white',
         $title = 'Ready To Transform Your Smile and Live Happier?',
         $titleColor = 'text-[#343A40]',
-        $btnUrl = '#default',
+        $btnUrl = '#',
         $btnText = 'MEET THE DENTIST'
     ) {
         $this->stylesection = $stylesection;
