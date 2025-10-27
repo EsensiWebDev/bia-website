@@ -1,3 +1,4 @@
+import.meta.glob('../images/**/*', { eager: true });
 import Swiper from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
