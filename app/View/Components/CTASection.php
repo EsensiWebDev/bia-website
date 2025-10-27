@@ -17,7 +17,7 @@ class CTASection extends Component
     public $btnUrl;
     public $btnText;
     public function __construct(
-        $stylesection = 'py-16 bg-white]',
+        $stylesection = 'py-16 bg-white',
         $title = 'Ready To Transform Your Smile and Live Happier?',
         $titleColor = 'text-[#343A40]',
         $btnUrl = '#default',
