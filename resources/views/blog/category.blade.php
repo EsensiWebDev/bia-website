@@ -7,7 +7,7 @@
         subHeading="<div class='mt-5 flex md:flex-row flex-wrap gap-3 md:gap-5 justify-center'>
                         <h2 class='text-gray-100 uppercase text-2xl'>{{ $category->title }}</h2>
                     </div>"
-        backUrl="<a href='{{ route('blog.index') }}' class='absolute top-8 left-6'>< BACK</a>" />
+        backUrl="<a href='{{ route('article.index') }}' class='absolute top-8 left-6'>< BACK</a>" />
 
     {{-- Section Main Grid Article --}}
     <section class="blog bg-white">
@@ -20,7 +20,7 @@
                     @foreach ($articles as $article)
                         <article
                             class="flex max-w flex-col items-start justify-between overflow-hidden group cursor-pointer">
-                            <a href="{{ route('blog.show', [$article->category->slug, $article->slug]) }}"
+                            <a href="{{ route('article.show', [$article->category->slug, $article->slug]) }}"
                                 class="block w-full">
                                 <div class="overflow-hidden w-full h-64">
                                     <img src="{{ asset('storage/' . $article->thumbnail) }}"
@@ -32,13 +32,13 @@
                                 <time datetime="{{ $article->publish_date->format('Y-m-d') }}">
                                     {{ $article->publish_date->format('d F Y') }}
                                 </time> |
-                                <a href="{{ route('blog.category', $article->category->slug) }}"
+                                <a href="{{ route('article.category', $article->category->slug) }}"
                                     class="hover:text-[#203B6E]">
                                     {{ $article->category->title }}
                                 </a>
                             </div>
                             <div class="grow">
-                                <a href="{{ route('blog.show', [$article->category->slug, $article->slug]) }}"
+                                <a href="{{ route('article.show', [$article->category->slug, $article->slug]) }}"
                                     class="block">
                                     <h3
                                         class="text-xl font-bold text-[#203B6E] transition-colors duration-300 group-hover:text-[#7DB8D8]">

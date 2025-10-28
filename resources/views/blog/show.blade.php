@@ -4,11 +4,11 @@
     {{-- After Header Section --}}
     <x-after-header styleSection="py-48" title="{{ $article->title }}"
         subHeading="<div class='mt-5 flex md:flex-row flex-wrap gap-3 md:gap-5 justify-center'>
-                        <a href='{{ route('blog.category', $article->category->slug) }}' class='hover:text-[#7DB8D8] text-gray-100 uppercase'>{{ $article->category->title }}</a> |
+                        <a href='{{ route('article.category', $article->category->slug) }}' class='hover:text-[#7DB8D8] text-gray-100 uppercase'>{{ $article->category->title }}</a> |
                         <p class='text-gray-100 uppercase'>{{ $article->publish_date->format('d F Y') }}</p> |
                         <p class='capitalize'>by {{ $article->author }}</p>
                     </div>"
-        backUrl="<a href='{{ route('blog.index') }}' class='absolute top-8 left-6'>< BACK</a>" />
+        backUrl="<a href='{{ route('article.index') }}' class='absolute top-8 left-6'>< BACK</a>" />
 
     {{-- Article Thumbnail & Content --}}
     <section class="max-w-4xl mx-auto px-4 border-b border-gray-200">
@@ -37,7 +37,7 @@
                     @foreach ($relateds as $related)
                         <article
                             class="flex max-w flex-col items-start justify-between overflow-hidden group cursor-pointer">
-                            <a href="{{ route('blog.show', [$related->category->slug, $related->slug]) }}"
+                            <a href="{{ route('article.show', [$related->category->slug, $related->slug]) }}"
                                 class="block w-full">
                                 <div class="overflow-hidden w-full h-64">
                                     <img src="{{ asset('storage/' . $related->thumbnail) }}"
@@ -49,13 +49,13 @@
                                 <time datetime="{{ $related->publish_date->format('Y-m-d') }}">
                                     {{ $related->publish_date->format('d F Y') }}
                                 </time> |
-                                <a href="{{ route('blog.category', $related->category->slug) }}"
+                                <a href="{{ route('article.category', $related->category->slug) }}"
                                     class="hover:text-[#203B6E]">
                                     {{ $related->category->title }}
                                 </a>
                             </div>
                             <div class="grow">
-                                <a href="{{ route('blog.show', [$related->category->slug, $related->slug]) }}"
+                                <a href="{{ route('article.show', [$related->category->slug, $related->slug]) }}"
                                     class="block">
                                     <h3
                                         class="text-xl font-bold text-[#203B6E] transition-colors duration-300 group-hover:text-[#7DB8D8]">

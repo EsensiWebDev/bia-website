@@ -94,7 +94,6 @@ h6,
     @apply text-2xl md:text-3xl my-3 font-bold;
     font-family: "Montserrat", sans-serif;
 }
-
 .det-career .content ul {
     @apply list-disc list-inside ml-3;
 }
@@ -103,4 +102,24 @@ h6,
 }
 .det-career .content li {
     @apply mb-1 text-[#000];
+}
+.testimonials-bia {
+    height: 600px;
+}
+.testimonials-bia .swiper-slide {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    height: auto !important;
+    transition: opacity 1.5s ease;
+    opacity: 1;
+}
+.testimonials-bia .swiper-wrapper {
+    align-items: flex-start !important;
+    transition-timing-function: linear !important;
+}
+.testimonials-bia .swiper-slide-active,
+.testimonials-bia .swiper-slide-next,
+.testimonials-bia .swiper-slide-next + .swiper-slide {
+    opacity: 1;
 }

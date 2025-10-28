@@ -5,12 +5,13 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/thumbs";
 
-import { Navigation, Pagination, Autoplay, Thumbs } from "swiper/modules";
+import { Navigation, Pagination, Autoplay, Thumbs, EffectFade } from "swiper/modules";
 document.addEventListener("DOMContentLoaded", () => {
     console.log("✅ Swiper initializing...");
     const swiperDA = document.querySelector(".doctors-academic");
     const mainSwiperEl = document.querySelector(".ours-doctors");
     const thumbsSwiperEl = document.querySelector(".doctors-thumbs");
+    const swipertestimonials = document.querySelector(".testimonials-bia");
     const detailsList = document.querySelectorAll("details.faq");
     const image = document.getElementById("faq-image");
 
@@ -51,6 +52,30 @@ document.addEventListener("DOMContentLoaded", () => {
             "⚠️ Swiper: Tidak dapat menemukan elemen dengan class 'doctors-academic'",
         );
     }
+
+    if (swipertestimonials) {
+        const testimonialsSwiper = new Swiper(swipertestimonials, {
+            modules: [Autoplay],
+            direction: "vertical",
+            slidesPerView: 3.2,
+            spaceBetween: 25,
+            loop: true,
+            freeMode: true,
+            freeModeMomentum: false,
+            speed: 10000,
+            autoplay: {
+                delay: 0,
+                disableOnInteraction: false,
+            },
+            allowTouchMove: true,
+            centeredSlides: false,
+        });
+    } else {
+        console.error(
+            "⚠️ Swiper: Tidak dapat menemukan elemen dengan class 'testimonials-bia'",
+        );
+    }
+
 
     if (mainSwiperEl && thumbsSwiperEl) {
         // === Thumbnail Swiper ===

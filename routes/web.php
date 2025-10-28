@@ -38,10 +38,10 @@ Route::prefix('pricing')->group(function () {
 });
 
 // BLOG
-Route::prefix('blog')->group(function () {
-    Route::get('/', [BlogController::class, 'index'])->name('blog.index');
-    Route::get('/{category}', [BlogController::class, 'category'])->name('blog.category');
-    Route::get('/{category}/{slug}', [BlogController::class, 'show'])->name('blog.show');
+Route::prefix('article')->group(function () {
+    Route::get('/', [BlogController::class, 'index'])->name('article.index');
+    Route::get('/{category}', [BlogController::class, 'category'])->name('article.category');
+    Route::get('/{category}/{slug}', [BlogController::class, 'show'])->name('article.show');
 });
 
 // DOCTOR

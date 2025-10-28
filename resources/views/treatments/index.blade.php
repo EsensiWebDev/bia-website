@@ -65,10 +65,9 @@
         <x-available-treatments :treatments="$cattreatments" stylesection="bg-[#F1F1F1] pt-16 pb-24" title="Treatments Available"
             titleColor="text-[#203B6E]" />
 
-
-
         {{-- CTA Section --}}
         <x-cta-section stylesection="py-26 bg-white" titleColor="text-[#343A40]"
-            title="Ready To Transform Your Smile and Live Happier?" btnUrl="/" btnText="MEET THE DENTIST" />
+            title="Ready To Transform Your Smile and Live Happier?" btnUrl="{{ route('booknow') }}"
+            btnText="MEET THE DENTIST" />
     </div>
 @endsection

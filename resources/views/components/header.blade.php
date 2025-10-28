@@ -25,7 +25,7 @@
                 <a href="{{ route('allon4implant') }}" class=" hover:text-gray-300 font-medium">All-on-4 Implant</a>
                 <a href="{{ route('pricing.index') }}" class=" hover:text-gray-300 font-medium">Pricing</a>
                 <a href="{{ route('about') }}" class=" hover:text-gray-300 font-medium">About Us</a>
-                <a href="{{ route('blog.index') }}" class=" hover:text-gray-300 font-medium">Blog</a>
+                <a href="{{ route('article.index') }}" class=" hover:text-gray-300 font-medium">Article</a>
 
                 <!-- Book Now Button -->
                 <div class="hidden md:flex">
@@ -66,7 +66,7 @@
             Implant</a>
         <a href="{{ route('pricing.index') }}" class="block px-4 py-2 text-white hover:bg-gray-700">Pricing</a>
         <a href="{{ route('about') }}" class="block px-4 py-2 text-white hover:bg-gray-700">About Us</a>
-        <a href="{{ route('blog.index') }}" class="block px-4 py-2 text-white hover:bg-gray-700">Blog</a>
+        <a href="{{ route('article.index') }}" class="block px-4 py-2 text-white hover:bg-gray-700">Article</a>
         <a href="{{ route('booknow') }}"
             class="block px-4 py-2 mr-2 ml-2 text-white bg-[#7DB8D8] hover:bg-[#6ca7c8] mt-2 rounded-md font-semibold">
             Book Now

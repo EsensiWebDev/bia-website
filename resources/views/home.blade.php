@@ -165,63 +165,196 @@
                             </div>
                         </div>
                         <!-- Testimonials -->
-                        <div class="grid gap-8 md:grid-cols-1">
-                            <div class="flex items-start gap-5">
-                                <img src="https://randomuser.me/api/portraits/women/1.jpg" alt="Melay Presores"
-                                    class="w-18 rounded-full object-cover">
-                                <div>
-                                    <p class="font-semibold">Melay Presores</p>
-                                    <div class="text-[#203B6E] text-xs my-1 my-1">
-                                        @for ($i = 0; $i < 5; $i++)
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                        @endfor
+                        <div class="swiper testimonials-bia overflow-hidden">
+                            <div class="swiper-wrapper flex-col gap-2">
+                                {{-- Melay Presores --}}
+                                <div class="swiper-slide">
+                                    <img src="{{ Vite::asset('resources/images/testimonials/profile01.webp') }}"
+                                        alt="Melay Presores" class="w-18 rounded-full object-cover">
+                                    <div>
+                                        <p class="font-semibold">Melay Presores</p>
+                                        <div class="text-[#203B6E] text-xs my-1">
+                                            @for ($i = 0; $i < 5; $i++)
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                            @endfor
+                                        </div>
+                                        <p class="leading-relaxed">
+                                            Thank you so much to BIA Dental, and special thanks to my doctor Felix, who is
+                                            incredibly kind, professional, and helpful. I loved my porcelain crown teeth.
+                                            You restored the beauty and self-assurance to my smile. It was worth travelling
+                                            to Bali for my teeth and vacation. From the first day to day 5, Doc. Felix
+                                            ensures that everything is delivered on time, which is why I highly recommend
+                                            them. The timeline was remarkable. Before my flight to Australia, you made sure
+                                            that everything was complete on schedule.
+                                        </p>
                                     </div>
-                                    <p class="leading-relaxed">
-                                        Thank you so much to BIA Dental, and special thanks to my doctor Felix, who is
-                                        incredibly kind, professional, and helpful. I loved my porcelain crown teeth. You
-                                        restored the beauty and self-assurance to my smile. It was worth travelling to Bali
-                                        for my teeth and vacation. From the first day to day 5, Doc. Felix ensures that
-                                        everything is delivered on time, which is why I highly recommend them. The timeline
-                                        was remarkable. Before my flight to Australia, you made sure that everything was
-                                        complete on schedule.
-                                    </p>
                                 </div>
-                            </div>
-                            <div class="flex items-start gap-5">
-                                <img src="https://randomuser.me/api/portraits/women/2.jpg" alt="Suzanna Sandie"
-                                    class="w-18 rounded-full object-cover">
-                                <div>
-                                    <p class="font-semibold">Suzanna Sandic</p>
-                                    <div class="text-[#203B6E] text-xs my-1 my-1">
-                                        @for ($i = 0; $i < 5; $i++)
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                        @endfor
+                                {{-- Suzanna Sandic --}}
+                                <div class="swiper-slide">
+                                    <img src="{{ Vite::asset('resources/images/testimonials/profile02.webp') }}"
+                                        alt="Suzanna Sandie" class="w-18 rounded-full object-cover">
+                                    <div>
+                                        <p class="font-semibold">Suzanna Sandic</p>
+                                        <div class="text-[#203B6E] text-xs my-1">
+                                            @for ($i = 0; $i < 5; $i++)
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                            @endfor
+                                        </div>
+                                        <p class="leading-relaxed">
+                                            Seen Dr Felix excellent dentist extremely happy with his bed side manner and
+                                            work. This dentist is very honest and trustworthy. I fly to Bali from Brisbane
+                                            just to see Dr Felix. Highly recommend this dental practice and Dr Felix.
+                                        </p>
                                     </div>
-                                    <p class="leading-relaxed">
-                                        Seen Dr Felix excellent dentist extremely happy with his bed side manner and work.
-                                        This dentist is very honest and trustworthy. I fly to Bali from Brisbane just to see
-                                        Dr Felix. Highly recommend this dental practice and Dr Felix.
-                                    </p>
                                 </div>
-                            </div>
-                            <div class="flex items-start gap-5">
-                                <div
-                                    class="w-18 h-18 rounded-full bg-yellow-500 flex items-center justify-center text-white font-bold text-lg shrink-0">
-                                    S
-                                </div>
-                                <div>
-                                    <p class="font-semibold">Simon Lucas</p>
-                                    <div class="text-[#203B6E] text-xs my-1">
-                                        @for ($i = 0; $i < 4; $i++)
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                        @endfor
+                                {{-- Simon Lucas --}}
+                                <div class="swiper-slide">
+                                    <div
+                                        class="w-18 h-18 text-[42px] font-[400] rounded-full bg-yellow-500 flex items-center justify-center text-white shrink-0">
+                                        S
                                     </div>
-                                    <p class="leading-relaxed">
-                                        Needed to get a quick appointment for my wisdom tooth. Was able to come the next
-                                        day. The dentist was extremely friendly and careful. Also amazing follow up on
-                                        WhatsApp after the treatment. Prices are also really good, especially compared to
-                                        Europe. Can highly recommend!
-                                    </p>
+                                    <div>
+                                        <p class="font-semibold">Simon Lucas</p>
+                                        <div class="text-[#203B6E] text-xs my-1">
+                                            @for ($i = 0; $i < 4; $i++)
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                            @endfor
+                                        </div>
+                                        <p class="leading-relaxed">
+                                            Needed to get a quick appointment for my wisdom tooth. Was able to come the next
+                                            day. The dentist was extremely friendly and careful. Also amazing follow up on
+                                            WhatsApp after the treatment. Prices are also really good, especially compared
+                                            to Europe. Can highly recommend!
+                                        </p>
+                                    </div>
+                                </div>
+                                {{-- Ravita Haag --}}
+                                <div class="swiper-slide">
+                                    <div
+                                        class="w-18 h-18 text-[42px] font-[400] rounded-full bg-[#7DB8D8] flex items-center justify-center text-white shrink-0">
+                                        R
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold">Ravita Haag</p>
+                                        <div class="text-[#203B6E] text-xs my-1">
+                                            @for ($i = 0; $i < 5; $i++)
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                            @endfor
+                                        </div>
+                                        <p class="leading-relaxed">
+                                            We are impressed with BIA's services. Were able to make appointment for my
+                                            husband and I on the same day. The dentist did excellent job cleaning and filing
+                                            my teeth and my husband got a new crown. Great experience with them.
+                                        </p>
+                                    </div>
+                                </div>
+                                {{-- Donna Sharp --}}
+                                <div class="swiper-slide">
+                                    <div
+                                        class="w-18 h-18 text-[42px] font-[400] rounded-full bg-[#203B6E] flex items-center justify-center text-white shrink-0">
+                                        D
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold">Donna Sharp</p>
+                                        <div class="text-[#203B6E] text-xs my-1">
+                                            @for ($i = 0; $i < 4; $i++)
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                            @endfor
+                                        </div>
+                                        <p class="leading-relaxed">
+                                            I was perfectly cared for by Dr Indra and Dr Agune. They were kind, friendly and
+                                            very skilled. The attention to detail, their superior technology and affordable
+                                            costs made it all worthwhile visiting Bali. Not only did I get my dental work
+                                            done but had a great holiday.
+                                            I totally recommend BIA for all your dental care
+                                        </p>
+                                    </div>
+                                </div>
+                                {{-- Elisabeth de Haan --}}
+                                <div class="swiper-slide">
+                                    <div
+                                        class="w-18 h-18 text-[42px] font-[400] rounded-full bg-[#E5A000] flex items-center justify-center text-white shrink-0">
+                                        E
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold">Elisabeth de Haan</p>
+                                        <div class="text-[#203B6E] text-xs my-1">
+                                            @for ($i = 0; $i < 4; $i++)
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                            @endfor
+                                        </div>
+                                        <p class="leading-relaxed">
+                                            BIA is a great place with great location. Very good service with professional
+                                            dentist drg. Reinold Christian Lina, SpKG..
+                                            make your smile bright 🥰 …
+                                        </p>
+                                    </div>
+                                </div>
+                                {{-- Iris Neyron --}}
+                                <div class="swiper-slide">
+                                    <div
+                                        class="w-18 h-18 text-[42px] font-[400] rounded-full bg-[#CC3535] flex items-center justify-center text-white shrink-0">
+                                        I
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold">Iris Neyron</p>
+                                        <div class="text-[#203B6E] text-xs my-1">
+                                            @for ($i = 0; $i < 4; $i++)
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                            @endfor
+                                        </div>
+                                        <p class="leading-relaxed">
+                                            The staff is lovely, the dentist is very professional and friendly and the
+                                            clinic is spotless. I highly recommend for implants.
+                                        </p>
+                                    </div>
+                                </div>
+                                {{-- The Wanderer --}}
+                                <div class="swiper-slide">
+                                    <div
+                                        class="w-18 h-18 text-[42px] font-[400] rounded-full bg-[#8A38F5] flex items-center justify-center text-white shrink-0">
+                                        W
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold">The Wanderer</p>
+                                        <div class="text-[#203B6E] text-xs my-1">
+                                            @for ($i = 0; $i < 4; $i++)
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                            @endfor
+                                        </div>
+                                        <p class="leading-relaxed">
+                                            Dr Andhika gave me my confidence back with a beautiful smile, thank you for the
+                                            dental implants.  Impeccable service & professionalism to you Sir!  I found the
+                                            front office staff to be super helpful as well 🙏🏽
+                                        </p>
+                                    </div>
+                                </div>
+                                {{-- Chelsea Paul --}}
+                                <div class="swiper-slide">
+                                    <div
+                                        class="w-18 h-18 text-[42px] font-[400] rounded-full bg-[#E54500] flex items-center justify-center text-white shrink-0">
+                                        C
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold">Chelsea Paul</p>
+                                        <div class="text-[#203B6E] text-xs my-1">
+                                            @for ($i = 0; $i < 4; $i++)
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                            @endfor
+                                        </div>
+                                        <p class="leading-relaxed">
+                                            If you are looking for the best dentist to carry out full upper and lower
+                                            implants or any other dentistry, look no further than the fantastic team at BIA
+                                            they made me feel safe and totally happy with the fitting of 5 upper and 6 lower
+                                            implants to fit my new teeth to , I have my temporary fitted now and am looking
+                                            forward to having my permanents fitted in 6months time, these guys have the best
+                                            staff including the girls on the front desk the pain management Dr Okta and the
+                                            main man that performed the procedure I can not fault this place, they have
+                                            changed my whole life I cannot thanyou guys enough , and look forward to moving
+                                            forward with my permanants when the time is right and everything has healed
+                                            thankyou thankyou thankyou 😊
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -313,20 +446,20 @@
         </section>
 
         {{-- Blog/Article Section --}}
-        <section class="blog bg-white">
+        <section class="article bg-white">
             <div class="mx-auto max-w-7xl lg:px-8 border-t border-gray-200 py-16 px-4">
                 <div class="max-w-6xl mx-auto text-center mb-12">
-                    <h2 class="text-4xl font-[400] text-[#203B6E]">Blog</h2>
+                    <h2 class="text-4xl font-[400] text-[#203B6E]">Article</h2>
                 </div>
                 @if ($articles->isEmpty())
-                    <p class="text-center text-gray-500">No posts found.</p>
+                    <p class="text-center text-gray-500">No article found.</p>
                 @else
                     <div
                         class="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
                         @foreach ($articles as $article)
                             <article
                                 class="flex max-w flex-col items-start justify-between overflow-hidden group cursor-pointer">
-                                <a href="{{ route('blog.show', [$article->category->slug, $article->slug]) }}"
+                                <a href="{{ route('article.show', [$article->category->slug, $article->slug]) }}"
                                     class="block w-full">
                                     <div class="overflow-hidden w-full h-64">
                                         <img src="{{ asset('storage/' . $article->thumbnail) }}"
@@ -338,13 +471,13 @@
                                     <time datetime="{{ $article->publish_date->format('Y-m-d') }}">
                                         {{ $article->publish_date->format('d F Y') }}
                                     </time> |
-                                    <a href="{{ route('blog.category', $article->category->slug) }}"
+                                    <a href="{{ route('article.category', $article->category->slug) }}"
                                         class="hover:text-[#203B6E]">
                                         {{ $article->category->title }}
                                     </a>
                                 </div>
                                 <div class="grow">
-                                    <a href="{{ route('blog.show', [$article->category->slug, $article->slug]) }}"
+                                    <a href="{{ route('article.show', [$article->category->slug, $article->slug]) }}"
                                         class="block">
                                         <h3
                                             class="text-xl font-bold text-[#203B6E] transition-colors duration-300 group-hover:text-[#7DB8D8]">
@@ -360,7 +493,7 @@
                     </div>
                 @endif
                 <div class="flex space-x-4 justify-center mt-8">
-                    <a href="{{ route('blog.index') }}"
+                    <a href="{{ route('article.index') }}"
                         class="bg-[#7DB8D8] hover:bg-[#6ca7c8] text-white px-6 py-3 font-semibold transition">
                         VIEW MORE ARTICLES
                     </a>
@@ -370,6 +503,7 @@
 
         {{-- CTA Section --}}
         <x-cta-section stylesection="py-26 bg-white" titleColor="text-[#343A40]"
-            title="Ready To Transform Your Smile and Live Happier?" btnUrl="/" btnText="MEET THE DENTIST" />
+            title="Ready To Transform Your Smile and Live Happier?" btnUrl="{{ route('booknow') }}"
+            btnText="MEET THE DENTIST" />
     </div>
 @endsection
