@@ -14,6 +14,7 @@
             title="Treatments Available" titleColor="text-[#203B6E]" />
 
         {{-- CTA Section --}}
-        <x-cta-section stylesection="py-26 bg-white" />
+        <x-cta-section stylesection="py-26 bg-white" titleColor="text-[#343A40]"
+            title="Ready To Transform Your Smile and Live Happier?" btnUrl="/" btnText="MEET THE DENTIST" />
     </div>
 @endsection
