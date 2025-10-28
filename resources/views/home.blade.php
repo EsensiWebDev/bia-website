@@ -28,7 +28,7 @@
                             fully again.
                         </p>
                         <div class="justify-center md:justify-start flex space-x-4">
-                            <a href="#meet-dentist"
+                            <a href="{{ route('booknow') }}"
                                 class="bg-[#7DB8D8] hover:bg-[#6ca7c8] text-white px-6 py-3 font-semibold transition">
                                 MEET THE DENTIST
                             </a>
@@ -68,7 +68,7 @@
                         From your first visit to your final result, our highly skilled and competent dentists ensure you
                         feel safe, calm, and confident every step of the way.
                     </p>
-                    <a href="#meet-dentist"
+                    <a href="{{ route('booknow') }}"
                         class="inline-block bg-[#7DB8D8] hover:bg-[#6ca7c8] text-white px-6 py-3 font-semibold transition">
                         MEET THE DENTIST
                     </a>
@@ -84,14 +84,15 @@
                         </div>
                     </div>
 
-                    <div class="absolute flex flex-col gap-4 right-10 lg:top-5 sm:top-100">
+                    {{-- Btn Virtual 360 --}}
+                    {{-- <div class="absolute flex flex-col gap-4 right-10 lg:top-5 sm:top-100">
                         <a href="#"
                             class="bg-[#D9D9D9] hover:bg-[#C1C1C1] text-white rounded-full w-24 h-24 flex items-center justify-center font-semibold text-center transition-all duration-300">
                             <span class="leading-tight">Virtual <br>360</span></a>
                         <a href="#"
                             class="bg-[#D9D9D9] hover:bg-[#C1C1C1] text-white rounded-full w-24 h-24 flex items-center justify-center font-semibold text-center transition-all duration-300">
                             <span class="leading-tight">AI <br>Smile</span></a>
-                    </div>
+                    </div> --}}
                 </div>
 
             </div>
