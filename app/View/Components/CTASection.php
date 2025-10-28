@@ -35,6 +35,6 @@ class CTASection extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.cta-section', get_object_vars($this));
+        return view('components.cta-section');
     }
 }
