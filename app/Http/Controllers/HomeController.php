@@ -6,6 +6,7 @@ use App\Models\Doctor;
 use App\Models\Articles;
 use Illuminate\Http\Request;
 use App\Models\CategoryTreatment;
+use App\Models\Treatment;
 
 class HomeController extends Controller
 {
@@ -47,7 +48,7 @@ class HomeController extends Controller
     public function allon4implant()
     {
 
-        $category = CategoryTreatment::where('slug', 'full-mouth-dental-implant')->first();
+        $category = Treatment::where('slug', 'full-mouth-dental-implant')->first();
 
         // Check if the page content is empty
         if (!$category || empty($category->content)) {
