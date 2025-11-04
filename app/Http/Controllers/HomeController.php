@@ -46,7 +46,18 @@ class HomeController extends Controller
 
     public function allon4implant()
     {
-        return view('allon4implant');
+
+        $category = CategoryTreatment::where('slug', 'full-mouth-dental-implant')->first();
+
+        // Check if the page content is empty
+        if (!$category || empty($category->content)) {
+            // Redirect to the 'allon4implant' route if the page content is empty
+            return redirect()->route('allon4implant');
+        }
+
+        // Return the view with page content if it's not empty
+        return view('treatments.dental-implant.full-mouth', compact('page'));
+        // return view('allon4implant');
     }
 
     public function faq()
