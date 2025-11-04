@@ -23,7 +23,7 @@ class AppServiceProvider extends ServiceProvider
     {
         // Share data kategori ke semua view
         $categories = CategoryTreatment::select('id', 'title', 'slug')
-            ->orderByDesc('created_at')
+            ->orderBy('created_at')
             ->get();
 
         View::share('categories_treatment', $categories);

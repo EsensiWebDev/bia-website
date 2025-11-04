@@ -41,7 +41,7 @@
                     absolute left-0 top-full pt-2 w-52 bg-white shadow-lg rounded-lg z-50
                     transition-all duration-200 ease-out pointer-events-none group-hover:pointer-events-auto">
                             <div class="py-2">
-                                @foreach ($categories_treatment->orderBy('created_at') as $category)
+                                @foreach ($categories_treatment as $category)
                                     <a href="{{ route('treatments.treatments', $category->slug) }}"
                                         class="block px-4 py-2 text-[#203B6E] hover:bg-gray-100 whitespace-nowrap">
                                         {{ $category->title }}
@@ -56,8 +56,7 @@
                     </a>
                 @endif
 
-                <a href="/treatments/dental-implant/full-mouth-dental-implant"
-                    class=" hover:text-gray-300 font-medium">All-on-4 Implant</a>
+                <a href="/treatments/dental-implant/full-mouth-dental-implant" class=" hover:text-gray-300 font-medium">All-on-4 Implant</a>
                 <a href="{{ route('pricing.index') }}" class=" hover:text-gray-300 font-medium">Pricing</a>
                 <a href="{{ route('about') }}" class=" hover:text-gray-300 font-medium">About Us</a>
                 <a href="{{ route('article.index') }}" class=" hover:text-gray-300 font-medium">Article</a>
@@ -102,7 +101,7 @@
                     class="block px-4 py-2 text-gray-300 font-semibold hover:bg-gray-700">
                     Treatments
                 </a>
-                @foreach ($categories_treatment->orderBy('created_at') as $category)
+                @foreach ($categories_treatment as $category)
                     <a href="{{ route('treatments.treatments', $category->slug) }}"
                         class="block px-6 py-2 text-white hover:bg-gray-700">
                         {{ $category->title }}
