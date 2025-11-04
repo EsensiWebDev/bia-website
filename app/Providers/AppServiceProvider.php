@@ -22,7 +22,10 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         // Share data kategori ke semua view
-        $categories = CategoryTreatment::select('id', 'title', 'slug')
+        $categories = CategoryTreatment::with(['treatments' => function ($query) {
+            $query->select('id', 'category_treatment_id', 'title', 'slug');
+        }])
+            ->select('id', 'title', 'slug')
             ->orderBy('created_at')
             ->get();
 

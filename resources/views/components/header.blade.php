@@ -35,28 +35,53 @@
                             </svg>
                         </a>
 
-                        <!-- ✅ Dropdown anti-hilang saat hover -->
+                        <!-- Dropdown level 1 -->
                         <div
                             class="invisible opacity-0 group-hover:visible group-hover:opacity-100
-                    absolute left-0 top-full pt-2 w-52 bg-white shadow-lg rounded-lg z-50
-                    transition-all duration-200 ease-out pointer-events-none group-hover:pointer-events-auto">
+                absolute left-0 top-full pt-2 w-52 bg-white shadow-lg rounded-lg z-50
+                transition-all duration-200 ease-out pointer-events-none group-hover:pointer-events-auto">
+
                             <div class="py-2">
                                 @foreach ($categories_treatment as $category)
-                                    <a href="{{ route('treatments.treatments', $category->slug) }}"
-                                        class="block px-4 py-2 text-[#203B6E] hover:bg-gray-100 whitespace-nowrap">
-                                        {{ $category->title }}
-                                    </a>
+                                    <div class="relative group/item">
+                                        <a href="{{ route('treatments.treatments', $category->slug) }}"
+                                            class="block px-4 py-2 text-[#203B6E] hover:bg-gray-100 whitespace-nowrap flex justify-between items-center">
+                                            {{ $category->title }}
+                                            @if ($category->treatments->isNotEmpty())
+                                                <svg class="w-4 h-4 ml-2 transform group-hover/item:rotate-180 transition-transform duration-300"
+                                                    xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                    viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2" d="M9 5l7 7-7 7" />
+                                                </svg>
+                                            @endif
+                                        </a>
+
+                                        <!-- Dropdown level 2 -->
+                                        @if ($category->treatments->isNotEmpty())
+                                            <div
+                                                class="invisible opacity-0 group-hover/item:visible group-hover/item:opacity-100
+                                    absolute left-full top-0 w-56 bg-white shadow-lg rounded-lg transition-all duration-200 ease-out
+                                    pointer-events-none group-hover/item:pointer-events-auto">
+                                                <div class="py-2">
+                                                    @foreach ($category->treatments as $treatment)
+                                                        <a href="{{ route('treatments.show', $treatment->slug) }}"
+                                                            class="block px-4 py-2 text-[#203B6E] hover:bg-gray-100 whitespace-nowrap">
+                                                            {{ $treatment->title }}
+                                                        </a>
+                                                    @endforeach
+                                                </div>
+                                            </div>
+                                        @endif
+                                    </div>
                                 @endforeach
                             </div>
                         </div>
                     </div>
-                @else
-                    <a href="{{ route('treatments.index') }}" class="hover:text-gray-300 font-medium">
-                        Treatments
-                    </a>
                 @endif
 
-                <a href="/treatments/dental-implant/full-mouth-dental-implant" class=" hover:text-gray-300 font-medium">All-on-4 Implant</a>
+                <a href="/treatments/dental-implant/full-mouth-dental-implant"
+                    class=" hover:text-gray-300 font-medium">All-on-4 Implant</a>
                 <a href="{{ route('pricing.index') }}" class=" hover:text-gray-300 font-medium">Pricing</a>
                 <a href="{{ route('about') }}" class=" hover:text-gray-300 font-medium">About Us</a>
                 <a href="{{ route('article.index') }}" class=" hover:text-gray-300 font-medium">Article</a>
@@ -102,10 +127,37 @@
                     Treatments
                 </a>
                 @foreach ($categories_treatment as $category)
-                    <a href="{{ route('treatments.treatments', $category->slug) }}"
-                        class="block px-6 py-2 text-white hover:bg-gray-700">
-                        {{ $category->title }}
-                    </a>
+                    <div class="relative group/item">
+                        <a href="{{ route('treatments.treatments', $category->slug) }}"
+                            class="block px-4 py-2 text-[#203B6E] hover:bg-gray-100 whitespace-nowrap flex justify-between items-center">
+                            {{ $category->title }}
+                            @if ($category->treatments->isNotEmpty())
+                                <svg class="w-4 h-4 ml-2 transform group-hover/item:rotate-180 transition-transform duration-300"
+                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 5l7 7-7 7" />
+                                </svg>
+                            @endif
+                        </a>
+
+                        <!-- Dropdown level 2 -->
+                        @if ($category->treatments->isNotEmpty())
+                            <div
+                                class="invisible opacity-0 group-hover/item:visible group-hover/item:opacity-100
+                                    absolute left-full top-0 w-56 bg-white shadow-lg rounded-lg transition-all duration-200 ease-out
+                                    pointer-events-none group-hover/item:pointer-events-auto">
+                                <div class="py-2">
+                                    @foreach ($category->treatments as $treatment)
+                                        <a href="{{ route('treatments.show', $treatment->slug) }}"
+                                            class="block px-4 py-2 text-[#203B6E] hover:bg-gray-100 whitespace-nowrap">
+                                            {{ $treatment->title }}
+                                        </a>
+                                    @endforeach
+                                </div>
+                            </div>
+                        @endif
+                    </div>
                 @endforeach
             </div>
         @else
