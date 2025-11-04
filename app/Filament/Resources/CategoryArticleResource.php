@@ -144,7 +144,7 @@ class CategoryArticleResource extends Resource
                     Action::make('preview')
                         ->label('Preview')
                         ->icon('heroicon-o-eye')
-                        ->url(fn(CategoryArticle $record) => route('blog.category', [
+                        ->url(fn(CategoryArticle $record) => route('article.category', [
                             'category' => $record->slug,
                         ]))
                         ->openUrlInNewTab()

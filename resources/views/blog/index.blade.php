@@ -2,7 +2,7 @@
 
 @section('content')
     {{-- After Header Section --}}
-    <x-after-header stylesection="py-26 bg-white" title="Article" />
+    <x-after-header stylesection="py-26 bg-white" title="Article" subHeading="" backUrl="" />
 
     <section class="blog bg-white">
         <div class="mx-auto max-w-7xl lg:px-8 border-t border-gray-200 py-16 px-4">

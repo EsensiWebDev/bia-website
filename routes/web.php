@@ -24,7 +24,7 @@ Route::prefix('treatments')->group(function () {
     Route::get('/{category}/{slug}', [TreatmentController::class, 'show'])->name('treatments.show');
 });
 
-// TREATMENTS
+// TEAM
 Route::prefix('team')->group(function () {
     Route::get('/', [DoctorController::class, 'index'])->name('doctor.index');
     Route::get('/{slug}', [DoctorController::class, 'show'])->name('doctor.show');

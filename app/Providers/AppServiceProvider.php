@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Models\CategoryTreatment;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\View;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,6 +21,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        // Share data kategori ke semua view
+        $categories = CategoryTreatment::select('id', 'title', 'slug')
+            ->orderByDesc('created_at')
+            ->get();
+
+        View::share('categories_treatment', $categories);
     }
 }

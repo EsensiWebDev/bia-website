@@ -21,7 +21,41 @@
             <div
                 class="hidden {{ request()->routeIs('home') || request()->routeIs('facilities') ? 'text-white' : 'text-[#203B6E]' }}  md:flex space-x-8 items-center">
                 <a href="{{ route('home') }}" class=" hover:text-gray-300 font-medium">Home</a>
-                <a href="{{ route('treatments.index') }}" class=" hover:text-gray-300 font-medium">Treatments</a>
+
+                @if ($categories_treatment->isNotEmpty())
+                    <div class="relative group">
+                        <a href="{{ route('treatments.index') }}"
+                            class="hover:text-gray-300 font-medium flex items-center">
+                            Treatments
+                            <svg class="ml-1 w-4 h-4 transform group-hover:rotate-180 transition-transform duration-300"
+                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </a>
+
+                        <!-- ✅ Dropdown anti-hilang saat hover -->
+                        <div
+                            class="invisible opacity-0 group-hover:visible group-hover:opacity-100
+                    absolute left-0 top-full pt-2 w-52 bg-white shadow-lg rounded-lg z-50
+                    transition-all duration-200 ease-out pointer-events-none group-hover:pointer-events-auto">
+                            <div class="py-2">
+                                @foreach ($categories_treatment as $category)
+                                    <a href="{{ route('treatments.treatments', $category->slug) }}"
+                                        class="block px-4 py-2 text-[#203B6E] hover:bg-gray-100 whitespace-nowrap">
+                                        {{ $category->title }}
+                                    </a>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                @else
+                    <a href="{{ route('treatments.index') }}" class="hover:text-gray-300 font-medium">
+                        Treatments
+                    </a>
+                @endif
+
                 <a href="{{ route('allon4implant') }}" class=" hover:text-gray-300 font-medium">All-on-4 Implant</a>
                 <a href="{{ route('pricing.index') }}" class=" hover:text-gray-300 font-medium">Pricing</a>
                 <a href="{{ route('about') }}" class=" hover:text-gray-300 font-medium">About Us</a>
@@ -61,7 +95,24 @@
     <!-- Mobile Menu -->
     <div id="mobile-menu" class="hidden md:hidden bg-[#203B6E] pb-3">
         <a href="{{ route('home') }}" class="block px-4 py-2 text-white hover:bg-gray-700">Home</a>
-        <a href="{{ route('treatments.index') }}" class="block px-4 py-2 text-white hover:bg-gray-700">Treatments</a>
+        @if ($categories_treatment->isNotEmpty())
+            <div class="border-t border-gray-500 mt-2">
+                <a href="{{ route('treatments.index') }}"
+                    class="block px-4 py-2 text-gray-300 font-semibold hover:bg-gray-700">
+                    Treatments
+                </a>
+                @foreach ($categories_treatment as $category)
+                    <a href="{{ route('treatments.treatments', $category->slug) }}"
+                        class="block px-6 py-2 text-white hover:bg-gray-700">
+                        {{ $category->title }}
+                    </a>
+                @endforeach
+            </div>
+        @else
+            <a href="{{ route('treatments.index') }}" class="block px-4 py-2 text-white hover:bg-gray-700">
+                Treatments
+            </a>
+        @endif
         <a href="{{ route('allon4implant') }}" class="block px-4 py-2 text-white hover:bg-gray-700">All-on-4
             Implant</a>
         <a href="{{ route('pricing.index') }}" class="block px-4 py-2 text-white hover:bg-gray-700">Pricing</a>

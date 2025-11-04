@@ -3,7 +3,7 @@
 @section('content')
 
     {{-- After Header Section --}}
-    <x-after-header stylesection="py-26 bg-white" title="Blog"
+    <x-after-header stylesection="py-26 bg-white" title="Article"
         subHeading="<div class='mt-5 flex md:flex-row flex-wrap gap-3 md:gap-5 justify-center'>
                         <h2 class='text-gray-100 uppercase text-2xl'>{{ $category->title }}</h2>
                     </div>"

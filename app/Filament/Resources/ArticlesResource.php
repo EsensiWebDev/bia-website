@@ -205,7 +205,7 @@ class ArticlesResource extends Resource
                                 return null;
                             }
 
-                            return route('blog.show', [
+                            return route('article.show', [
                                 'category' => $record->category->slug,
                                 'slug' => $record->slug,
                             ]);

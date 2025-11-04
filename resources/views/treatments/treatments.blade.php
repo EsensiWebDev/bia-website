@@ -4,7 +4,7 @@
     <div class="treatment-category">
 
         {{-- After Header Section --}}
-        <x-after-header styleSection="md:py-32 bg-white" :title="$category->title" :subHeading="'<div class=\'text-white text-md sm:text-xl max-w-3xl text-center m-auto mt-6\'>' .
+        <x-after-header styleSection="py-36 md:py-32 bg-white" :title="$category->title" :subHeading="'<div class=\'text-white text-md sm:text-xl max-w-3xl text-center m-auto mt-6\'>' .
             $category->desc .
             '</div>'" />
 
