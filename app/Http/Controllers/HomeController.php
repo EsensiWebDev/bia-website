@@ -17,7 +17,7 @@ class HomeController extends Controller
             ->get();
 
         $cattreatments = CategoryTreatment::select('id', 'title', 'slug', 'thumbnail')
-            ->orderByDesc('created_at')
+            ->orderBy('created_at')
             ->get();
 
         return view('home', compact('articles', 'cattreatments'));
