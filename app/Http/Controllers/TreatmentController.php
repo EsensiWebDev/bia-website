@@ -11,7 +11,7 @@ class TreatmentController extends Controller
     public function index()
     {
         $cattreatments = CategoryTreatment::select('id', 'title', 'slug', 'thumbnail')
-            ->orderByDesc('created_at')
+            ->orderByAsc('created_at')
             ->get();
 
         return view('treatments.index', compact('cattreatments'));
