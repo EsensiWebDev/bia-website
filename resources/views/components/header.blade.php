@@ -56,7 +56,7 @@
                     </a>
                 @endif
 
-                <a href="{{ route('allon4implant') }}" class=" hover:text-gray-300 font-medium">All-on-4 Implant</a>
+                <a href="/treatments/dental-implant/full-mouth-dental-implant" class=" hover:text-gray-300 font-medium">All-on-4 Implant</a>
                 <a href="{{ route('pricing.index') }}" class=" hover:text-gray-300 font-medium">Pricing</a>
                 <a href="{{ route('about') }}" class=" hover:text-gray-300 font-medium">About Us</a>
                 <a href="{{ route('article.index') }}" class=" hover:text-gray-300 font-medium">Article</a>
