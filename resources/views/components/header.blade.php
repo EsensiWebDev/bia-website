@@ -68,7 +68,6 @@
                                                         <a href="{{ route('treatments.show', ['category' => $category->slug, 'slug' => $treatment->slug]) }}"
                                                             class="block px-4 py-2 text-[#203B6E] hover:bg-gray-100 whitespace-nowrap">
                                                             {{ explode('/', $treatment->title)[0] }}
-
                                                         </a>
                                                     @endforeach
                                                 </div>
@@ -130,7 +129,7 @@
                 @foreach ($categories_treatment as $category)
                     <div class="relative group/item">
                         <a href="{{ route('treatments.treatments', $category->slug) }}"
-                            class="block px-4 py-2 text-[#203B6E] hover:bg-gray-100 whitespace-nowrap flex justify-between items-center">
+                            class="block px-4 py-2 text-gray-300 whitespace-nowrap  justify-between items-center">
                             {{ $category->title }}
                             @if ($category->treatments->isNotEmpty())
                                 <svg class="w-4 h-4 ml-2 transform group-hover/item:rotate-180 transition-transform duration-300"
@@ -151,7 +150,7 @@
                                 <div class="py-2">
                                     @foreach ($category->treatments as $treatment)
                                         <a href="{{ route('treatments.show', ['category' => $category->slug, 'slug' => $treatment->slug]) }}"
-                                            class="block px-4 py-2 text-white whitespace-nowrap">
+                                            class="block px-4 py-2 text-white hover:bg-gray-700 whitespace-nowrap">
                                             {{ explode('/', $treatment->title)[0] }}
                                         </a>
                                     @endforeach
