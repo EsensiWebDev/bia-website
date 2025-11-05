@@ -165,7 +165,7 @@
                 Treatments
             </a>
         @endif
-        <a href="{{ route('allon4implant') }}" class="block px-4 py-2 text-white hover:bg-gray-700">All-on-4
+        <a href="/treatments/dental-implant/full-mouth-dental-implant" class="block px-4 py-2 text-white hover:bg-gray-700">All-on-4
             Implant</a>
         <a href="{{ route('pricing.index') }}" class="block px-4 py-2 text-white hover:bg-gray-700">Pricing</a>
         <a href="{{ route('about') }}" class="block px-4 py-2 text-white hover:bg-gray-700">About Us</a>
