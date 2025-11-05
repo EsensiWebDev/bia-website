@@ -150,7 +150,7 @@
                                 <div class="py-2">
                                     @foreach ($category->treatments as $treatment)
                                         <a href="{{ route('treatments.show',  ['category' => $category->slug, 'slug' => $treatment->slug]) }}"
-                                            class="block px-4 py-2 text-[#203B6E] hover:bg-gray-100 whitespace-nowrap">
+                                            class="block px-4 py-2 text-white whitespace-nowrap">
                                             {{ $treatment->title }}
                                         </a>
                                     @endforeach
