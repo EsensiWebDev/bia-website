@@ -65,7 +65,7 @@
                                     pointer-events-none group-hover/item:pointer-events-auto">
                                                 <div class="py-2">
                                                     @foreach ($category->treatments as $treatment)
-                                                        <a href="{{ route('treatments.show', $treatment->slug) }}"
+                                                        <a href="{{ route('treatments.show',  ['category' => $category->slug, 'slug' => $treatment->slug]) }}"
                                                             class="block px-4 py-2 text-[#203B6E] hover:bg-gray-100 whitespace-nowrap">
                                                             {{ $treatment->title }}
                                                         </a>
@@ -149,7 +149,7 @@
                                     pointer-events-none group-hover/item:pointer-events-auto">
                                 <div class="py-2">
                                     @foreach ($category->treatments as $treatment)
-                                        <a href="{{ route('treatments.show', $treatment->slug) }}"
+                                        <a href="{{ route('treatments.show',  ['category' => $category->slug, 'slug' => $treatment->slug]) }}"
                                             class="block px-4 py-2 text-[#203B6E] hover:bg-gray-100 whitespace-nowrap">
                                             {{ $treatment->title }}
                                         </a>
