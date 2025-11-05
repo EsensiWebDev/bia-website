@@ -121,40 +121,45 @@
     <div id="mobile-menu" class="hidden md:hidden bg-[#203B6E] pb-3">
         <a href="{{ route('home') }}" class="block px-4 py-2 text-white hover:bg-gray-700">Home</a>
         @if ($categories_treatment->isNotEmpty())
-            <div class="border-t border-gray-500 mt-2">
+            <div class="border-t border-gray-500 mt-2" x-data="{ openCategory: null }">
                 <a href="{{ route('treatments.index') }}"
                     class="block px-4 py-2 text-gray-300 font-semibold hover:bg-gray-700">
                     Treatments
                 </a>
+
                 @foreach ($categories_treatment as $category)
-                    <div class="relative group/item">
-                        <a href="{{ route('treatments.treatments', $category->slug) }}"
-                            class="px-4 py-2 text-gray-300 whitespace-nowrap flex justify-between items-center">
-                            {{ $category->title }}
+                    <div class="border-t border-gray-700" x-data="{ open: false }">
+                        <!-- Kategori utama -->
+                        <div
+                            class="flex justify-between items-center w-full pl-8 pr-4 py-2 text-white hover:bg-gray-700">
+                            <!-- Klik nama kategori = buka halaman -->
+                            <a href="{{ route('treatments.treatments', $category->slug) }}" class="flex-1">
+                                {{ $category->title }}
+                            </a>
+
+                            <!-- Klik panah = buka sub menu -->
                             @if ($category->treatments->isNotEmpty())
-                                <svg class="w-4 h-4 ml-2 transform group-hover/item:rotate-180 transition-transform duration-300"
-                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M9 5l7 7-7 7" />
-                                </svg>
+                                <button @click.stop="open = !open" class="p-1 focus:outline-none">
+                                    <svg :class="{ 'rotate-90': open }"
+                                        class="w-4 h-4 transform transition-transform duration-300"
+                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M9 5l7 7-7 7" />
+                                    </svg>
+                                </button>
                             @endif
-                        </a>
+                        </div>
 
                         <!-- Dropdown level 2 -->
                         @if ($category->treatments->isNotEmpty())
-                            <div
-                                class="invisible opacity-0 group-hover/item:visible group-hover/item:opacity-100
-                                    absolute left-full top-0 bg-white shadow-lg rounded-lg transition-all duration-200 ease-out
-                                    pointer-events-none group-hover/item:pointer-events-auto">
-                                <div class="py-2">
-                                    @foreach ($category->treatments as $treatment)
-                                        <a href="{{ route('treatments.show', ['category' => $category->slug, 'slug' => $treatment->slug]) }}"
-                                            class="block px-4 py-2 text-white hover:bg-gray-700 whitespace-nowrap">
-                                            {{ explode('/', $treatment->title)[0] }}
-                                        </a>
-                                    @endforeach
-                                </div>
+                            <div x-show="open" x-collapse x-transition class="pl-10 py-2 bg-gray-800 space-y-1">
+                                @foreach ($category->treatments as $treatment)
+                                    <a href="{{ route('treatments.show', ['category' => $category->slug, 'slug' => $treatment->slug]) }}"
+                                        class="block px-2 py-1 text-gray-300 hover:bg-gray-700 rounded">
+                                        {{ explode('/', $treatment->title)[0] }}
+                                    </a>
+                                @endforeach
                             </div>
                         @endif
                     </div>
@@ -165,7 +170,9 @@
                 Treatments
             </a>
         @endif
-        <a href="/treatments/dental-implant/full-mouth-dental-implant" class="block px-4 py-2 text-white hover:bg-gray-700">All-on-4
+
+        <a href="/treatments/dental-implant/full-mouth-dental-implant"
+            class="block px-4 py-2 text-white hover:bg-gray-700">All-on-4
             Implant</a>
         <a href="{{ route('pricing.index') }}" class="block px-4 py-2 text-white hover:bg-gray-700">Pricing</a>
         <a href="{{ route('about') }}" class="block px-4 py-2 text-white hover:bg-gray-700">About Us</a>

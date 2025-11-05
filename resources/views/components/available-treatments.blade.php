@@ -41,9 +41,7 @@
                                     class="w-full h-full object-cover group-hover:scale-105 transition">
                             </div>
                             <div
-                                class="absolute -bottom-4 left-1/2 transform -translate-x-1/2
-                            bg-[#7DB8D8] text-white px-5 py-2 font-semibold text-md uppercase tracking-wide
-                            shadow-lg whitespace-nowrap">
+                                class="absolute -bottom-4 left-1/2 transform -translate-x-1/2 bg-[#7DB8D8] text-white px-5 py-2 font-semibold text-md uppercase tracking-wide shadow-lg max-w-[350px] break-words whitespace-normal">
                                 {{ explode('/', $treatment->title)[0] }}
                             </div>
                         </a>
