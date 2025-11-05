@@ -61,7 +61,7 @@
                                         @if ($category->treatments->isNotEmpty())
                                             <div
                                                 class="invisible opacity-0 group-hover/item:visible group-hover/item:opacity-100
-                                    absolute left-full top-0 w-56 bg-white shadow-lg rounded-lg transition-all duration-200 ease-out
+                                    absolute left-full top-0 bg-white shadow-lg rounded-lg transition-all duration-200 ease-out
                                     pointer-events-none group-hover/item:pointer-events-auto">
                                                 <div class="py-2">
                                                     @foreach ($category->treatments as $treatment)
@@ -145,7 +145,7 @@
                         @if ($category->treatments->isNotEmpty())
                             <div
                                 class="invisible opacity-0 group-hover/item:visible group-hover/item:opacity-100
-                                    absolute left-full top-0 w-56 bg-white shadow-lg rounded-lg transition-all duration-200 ease-out
+                                    absolute left-full top-0 bg-white shadow-lg rounded-lg transition-all duration-200 ease-out
                                     pointer-events-none group-hover/item:pointer-events-auto">
                                 <div class="py-2">
                                     @foreach ($category->treatments as $treatment)
