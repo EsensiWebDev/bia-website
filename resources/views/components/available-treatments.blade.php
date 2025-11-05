@@ -37,14 +37,14 @@
                         <a href="{{ $href }}" class="{{ $itemClass }}">
                             <div class="overflow-hidden h-[300px]">
                                 <img src="{{ asset('storage/' . $treatment->thumbnail) }}"
-                                    alt="{{$treatment->thumbnail_alt_text = $treatment->thumbnail_alt_text ?: 'Treatment Bia Dental' }}"
+                                    alt="{{ $treatment->thumbnail_alt_text = $treatment->thumbnail_alt_text ?: 'Treatment Bia Dental' }}"
                                     class="w-full h-full object-cover group-hover:scale-105 transition">
                             </div>
                             <div
                                 class="absolute -bottom-4 left-1/2 transform -translate-x-1/2
                             bg-[#7DB8D8] text-white px-5 py-2 font-semibold text-md uppercase tracking-wide
                             shadow-lg whitespace-nowrap">
-                                {{ $treatment->title }}
+                                {{ explode('/', $treatment->title)[0] }}
                             </div>
                         </a>
                     @endforeach
