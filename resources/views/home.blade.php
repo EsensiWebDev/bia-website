@@ -50,7 +50,7 @@
                         enhancing your quality of life.
                         Specialized in <span class="font-bold">Smile Makeovers</span> and <span class="font-bold">Full Mouth
                             Rehabilitation</span>, we've helped
-                        <span class="font-bold"><span class="text-xl">25,000++</span> local and international
+                        <span class="font-bold"><span class="text-xl">30,000++</span> local and international
                             patients</span>
                         achieve life-changing
                         results—all delivered with international dentistry standards.
