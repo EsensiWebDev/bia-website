@@ -10,7 +10,10 @@ module.exports = {
             fontFamily: {
                 montserrat: ['Montserrat', 'sans-serif'],
                 signika: ['Signika', 'sans-serif'],
-            }
+            },
+            screens: {
+                laptop: '1060px',
+            },
         },
     },
     plugins: [
