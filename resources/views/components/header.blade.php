@@ -19,7 +19,7 @@
 
             <!-- Desktop Menu -->
             <div
-                class="hidden {{ request()->routeIs('home') || request()->routeIs('facilities') ? 'text-white' : 'text-[#203B6E]' }}  laptop:flex space-x-8 items-center">
+                class="hidden {{ request()->routeIs('home') || request()->routeIs('facilities') ? 'text-white' : 'text-[#203B6E]' }}  lg:flex space-x-8 items-center">
                 <a href="{{ route('home') }}" class=" hover:text-gray-300 font-medium">Home</a>
 
                 @if ($categories_treatment->isNotEmpty())
@@ -96,7 +96,7 @@
             </div>
 
             <!-- Mobile Menu Button -->
-            <div class="laptop:hidden flex items-center">
+            <div class="lg:hidden flex items-center">
                 <button id="mobile-menu-button"
                     class="{{ request()->routeIs('home') || request()->routeIs('facilities') ? 'text-white' : 'text-[#203B6E]' }} focus:outline-none">
                     <!-- Hamburger Icon -->
@@ -118,7 +118,7 @@
     </div>
 
     <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden laptop:hidden bg-[#203B6E] pb-3">
+    <div id="mobile-menu" class="hidden lg:hidden bg-[#203B6E] pb-3">
         <a href="{{ route('home') }}" class="block px-4 py-2 text-white hover:bg-gray-700">Home</a>
         @if ($categories_treatment->isNotEmpty())
             <div class="border-t border-gray-500 mt-2" x-data="{ openCategory: null }">
